@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# Set the necessary permissions on the directories and files
+# so that the CS web server can get to them.
+#
+# This script assumes it is being run inside the unpacked
+# 'csci711' directory (or whatever name you have given it).
+#
+
+# first, permissions on the home directory and public_html directory
+
+chmod o+x $HOME $HOME/public_html
+
+# next, set permissions on this directory and all its subdirectories
+
+find . -type d -exec chmod o+x {} \;
+
+# finally, set permissions on all files within this directory
+# and its subdirectories
+
+find . -type f -exec chmod o+r {} \;

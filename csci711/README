@@ -1,0 +1,51 @@
+This is a really basic web page setup.  It creates a main page which has
+links to separate pages for the various assignments; each of them has a
+simple page as a placeholder.
+
+The main page uses a background color called "antique white".   You can
+change this by editing the "main.css" file's 'body' style settings,
+or by adding a class specifier to the HTML "body" tag and using one of
+the predefined color classes in "main.css" - e.g.,
+
+    <body class="palegreen">
+
+The first raytracer checkpoint page uses the "palegreen" background
+color, selected this way.  This page is an example of how you could set
+up a page that contains a mix of text paragraphs, images, and lists of
+date.  To change its contents, you would do the following:
+
+    * Edit the "index.html" file; it's plain text, so any text editor
+      will work.
+
+    * It assumes that your images are PNG files, and have names of the
+      form img1.png, img2.png, etc.  Obviously, those can be changed to
+      whatever format and names you choose.  Each image is enclosed in
+      an HTML hyperllink, and displayed at a fixed size of 300x300 pixels.
+      When you click on it, the full-size image will open up in a new 
+      browser tab.
+
+The other raytracer checkpoints do not have any files set up; you can
+copy the index.html file from the rt1/ directory and edit it as needed.
+
+The project entries in the main "index.html" are set up assuming you are
+going to upload them as PDF files with specific names.  You can change
+these names by editing that file.
+
+When you add or copy files, you need to make sure the web server can see
+them.  If you're doing this on the CS systems, you should have unpacked
+the ZIP archive inside the public_html/ directory (found at the top level
+in your account); if you keep the default name for the unpacked
+directory, its full path will be $HOME/public_html/csci711.
+
+In order to see your files, the files must be readable to "other" (the
+third set of permission bits); also, all directories down to each file
+must be executable to "other".  To simplify setting this up, run the
+"setperms" shellscript found in this directory:
+
+    ./setperms
+
+This will ensure that your home directory, your public_html directory,
+the unpacked directory, and all the subdirectories have 'execute'
+permission for "other" (at least - if you have added other permissions,
+those won't be changed), and that all files underneath the unpacked
+directory have at least 'read' permission for "other".
