@@ -151,7 +151,7 @@
 .edu-title
 {
     color: rgba(255, 255, 255, 255);
-    font-family: 'Major Mono Display', monospace;
+    font-family: 'cascadia', monospace;
     font-size: 2.8rem; 
     letter-spacing: +0.7rem;
     text-align: center;
@@ -170,7 +170,7 @@
 
 .we-year
 {
-  font-family: 'Major Mono Display', monospace;
+  font-family: 'cascadia', monospace;
   font-size: 2.2rem; 
   padding-top: 10px;
   padding-bottom: 0px;

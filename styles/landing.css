@@ -332,6 +332,7 @@ letter.initial
 
 .proj-button
 {
+  margin:5px;
   border: 2px solid white;
 	position: relative;
 	/* display: inline-block; */
