@@ -4,12 +4,13 @@
 
 const ProjectNames = 
 [
-    "mapex",
-    "mirage",
-    "exalted",
-    "15_puzzle",
-    "game_tech",
-    "vpa"
+    "CompleteRayTracer",
+    "RealTimeGI",
+    "SpicyRayMarcher",
+    "ProceduralGenerator",
+    "FunctionalCompiler",
+    "ClarissaAR",
+    "softwareRasterizer"
 ]
 
 let ProjectText = [];

@@ -334,14 +334,14 @@ letter.initial
 {
   border: 2px solid white;
 	position: relative;
-	display: inline-block;
-	border-radius: 50%;
+	/* display: inline-block; */
+	border-radius: 25%;
 	overflow: hidden;
 	transition: transform .3s;
-	max-width:10vh;
+	/* max-width:10vh;
 	min-width:10vh;
   min-height:10vh;
-	max-height:10vh;
+	max-height:10vh; */
   vertical-align: middle;
 }
 
@@ -356,16 +356,16 @@ letter.initial
 .proj-button-active
 {
 	position: relative;
-	display: inline-block;
+	/* display: inline-block; */
 	border: 2px solid yellow;
-	border-radius: 50%;
+	border-radius: 25%;
 	overflow: hidden;
 	transition: transform .3s;
 	vertical-align: middle;
-	max-width:10vh;
+	/* max-width:10vh;
 	min-width:10vh;
   min-height:10vh;
-	max-height:10vh;
+	max-height:10vh; */
 }
 
 .proj-button-active:hover
