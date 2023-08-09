@@ -10,8 +10,8 @@ body
     /* background-color: #1d2e1f;
     background-image: repeating-linear-gradient(rgba(0, 0, 255, 0.2), rgba(0, 0, 255, 0.2),#1c2619  102% ); 
      */
-    background-color: #1d2e1f;
-    background-image: repeating-radial-gradient(rgba(117, 0, 68, 0.2), rgba(250, 0, 187, 0.2),#1c2619  102% );
+     background-color: #202839;
+     background-image: repeating-radial-gradient(rgb(0 0 0 / 20%), rgba(70, 104, 84, 0.2),#1c2619 102% );
     height: 200vh;
     display: block; /* */
     /*margin: 0px;*/ /* rhs margin on the page */
@@ -332,10 +332,11 @@ letter.initial
 
 .proj-button
 {
-  margin:5px;
+  margin: 1rem; 
+  padding: 1rem;
   border: 2px solid white;
 	position: relative;
-	/* display: inline-block; */
+	display: inline-block;
 	border-radius: 25%;
 	overflow: hidden;
 	transition: transform .3s;
@@ -356,11 +357,15 @@ letter.initial
 
 .proj-button-active
 {
+  margin: 1rem; 
+  padding: 1rem;
 	position: relative;
-	/* display: inline-block; */
-	border: 2px solid yellow;
-	border-radius: 25%;
-	overflow: hidden;
+	display: inline-block;
+	border: 2px solid rgb(236, 68, 26);
+  box-shadow:  0 0 20px rgba(247, 241, 190, 0.5), 0 0 20px rgba(250, 196, 126, 0.5); 
+
+	border-radius: 15%;
+	overflow:auto;
 	transition: transform .3s;
 	vertical-align: middle;
 	/* max-width:10vh;
