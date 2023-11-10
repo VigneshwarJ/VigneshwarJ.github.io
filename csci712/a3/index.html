@@ -20,25 +20,25 @@
 	a hyperlink so that clicking on it will open a new browser
 	window or tab with the full-size image in it.
 -->
+<p>The cue ball restores to original place</p>
 
+Ball-Cushion Coefficient of Restitution:
+<span id="restitution-value">0.5</span><br />
+<input type="range" id="cushion" min="0" max="1" step="0.1" value="0.5">
+<br />
+
+Coefficient of Friction:
+<span id="friction-value">0.04</span><br />
+<input type="range" id="friction" min="0" max="1" step="0.01" value="0.04">
+<br />
+<span id="force">Force magnitude</span><br />
+<input type="range" id="forceValue" min="0" max="10000" step="10" value="1200" oninput="ageOutputId.value = forceValue.value">
+<output id="ageOutputId">1200</output>
+<br />
 <script src="https://threejs.org/build/three.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="scripts.js"></script>
         <br />
-        <p>The cue ball restores to original place</p>
 
-        Ball-Cushion Coefficient of Restitution:
-        <span id="restitution-value">0.5</span><br />
-        <input type="range" id="cushion" min="0" max="1" step="0.1" value="0.5">
-        <br />
-
-        Coefficient of Friction:
-        <span id="friction-value">0.04</span><br />
-        <input type="range" id="friction" min="0" max="1" step="0.01" value="0.04">
-        <br />
-        <span id="force">Force magnitude</span><br />
-        <input type="range" id="forceValue" min="0" max="10000" step="10" value="1200" oninput="ageOutputId.value = forceValue.value">
-        <output id="ageOutputId">1200</output>
-        <br />
 </body>
 </html>
