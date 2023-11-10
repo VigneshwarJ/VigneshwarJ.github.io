@@ -70,7 +70,7 @@ const ballGeo = new THREE.SphereGeometry(BALL_RADIUS, 32, 32);
 const cueMat = new THREE.MeshPhongMaterial({ color: 0xEEEEEE });
 const redMat = new THREE.MeshPhongMaterial({ color: 0xEE1111 });
 const blueMat = new THREE.MeshPhongMaterial({ color: 0x1111EE });
-const blackMat = new THREE.MeshPhongMaterial({ color: 0x111111 });
+const blackMat = new THREE.MeshPhongMaterial({ color: 0xf9ef07 });
 
 const cueBall = new THREE.Mesh(ballGeo, cueMat);
 cueBall.position.x = -1;
@@ -89,6 +89,7 @@ blueBall.castShadow = true; //default
 
 blueBall.position.x = 1.12;
 blueBall.position.z = 0.1;
+
 blueBall.name = 'blueBall';
 balls.add(blueBall);
 const blackBall = new THREE.Mesh(ballGeo, blackMat);
@@ -152,8 +153,8 @@ light.position.set(1.5, 1, 0);
 light.castShadow = true; // default false
 scene.add( light );
 
-const center = new THREE.Vector3(0, 0, 0);
-const mouse = new THREE.Vector3();
+var center = new THREE.Vector3(0, 0, 0);
+var mouse = new THREE.Vector3();
 
 const lineGeometry = new THREE.BufferGeometry().setFromPoints([center, mouse]);
 
@@ -202,14 +203,12 @@ const pocketMeshs = [backLeft, backRight, frontRight, frontLeft, backMiddle, fro
 
 // After 1 second, apply force to the cue ball (hitting it)
 function shoot( event )  {
-    const direction = cueModel.model.position.clone().sub(mouse);
+    const direction = center.clone().sub(mouse);
     // console.log(cueModel.model.position);
 
-    direction.normalize();
-    // console.log(direction);
-    cueModel.m = direction.clone().multiplyScalar(F);
-    // console.log(cueModel.m);
-
+    // direction.normalize();
+    console.log(direction.normalize());
+    cueModel.m = direction.clone().normalize().multiplyScalar(F);
     cueModel.m.y =0;
     console.log(cueModel.m);
     cueModel.m;
@@ -298,10 +297,25 @@ function main() {
 
             model.m = model.m.add(force.multiplyScalar(delta));
         }
-        mouse.set(pointer.x,pointer.y,0);
-        mouse.unproject(camera);
-         
-        lineGeometry.setFromPoints([ cueModel.model.position, mouse]);
+        raycaster.setFromCamera( pointer, camera );
+
+        // mouse.set(pointer.x,pointer.y,0);
+        // mouse.unproject(camera);
+        center.set(cueModel.model.position.x,cueModel.model.position.y+0.1 + BALL_RADIUS,
+            cueModel.model.position.z);
+            const intersects = raycaster.intersectObject( table);
+            if(intersects.length > 0)
+            {
+          
+                mouse = intersects[0].point.clone();
+            }
+	// for ( let i = 0; i < intersects.length; i ++ ) {
+        
+	// 	intersects.
+                
+	// }
+
+        lineGeometry.setFromPoints([ center, mouse]);
         // console.log(mouse);
         requestAnimationFrame(render);
         renderer.render(scene, camera);
