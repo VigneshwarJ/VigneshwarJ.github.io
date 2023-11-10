@@ -32,7 +32,7 @@ var renderer = new THREE.WebGLRenderer({
 });
 
 renderer.setSize(CANVAS_SIZE, CANVAS_SIZE);
-renderer.setClearColor(0);
+renderer.setClearColor(0xe6ffe6);
 document.body.appendChild(renderer.domElement);
 
 // Table
