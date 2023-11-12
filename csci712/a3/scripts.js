@@ -37,6 +37,8 @@ function initialize() {
 
     renderer.setSize(CANVAS_SIZE, CANVAS_SIZE);
     renderer.setClearColor(0xe6ffe6);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
     document.body.appendChild(renderer.domElement);
 }
 
@@ -46,6 +48,7 @@ initialize();
 const tableGeo = new THREE.BoxGeometry(4, 0.12, 2);
 const tableMat = new THREE.MeshPhongMaterial({ color: 0x55ff55 });
 const table = new THREE.Mesh(tableGeo, tableMat);
+table.position.y = .05;
 table.receiveShadow = true;
 // table.castShadow  = true;
 scene.add(table);
@@ -65,6 +68,14 @@ const shortCushionLeft = new THREE.Mesh(shortCushionGeo, cushionMat);
 shortCushionLeft.position.x = -2.05;
 const shortCushionRight = new THREE.Mesh(shortCushionGeo, cushionMat);
 shortCushionRight.position.x = 2.05;
+longCushionFar.castShadow = true;
+shortCushionLeft.castShadow = true;
+longCushionNear.castShadow = true;
+shortCushionRight.castShadow = true;
+longCushionFar.receiveShadow = true;
+shortCushionLeft.receiveShadow = true;
+longCushionNear.receiveShadow = true;
+shortCushionRight.receiveShadow = true;
 
 cushions.add(...[longCushionFar, longCushionNear, shortCushionLeft, shortCushionRight]);
 cushions.position.y = 0.15;
@@ -100,9 +111,10 @@ blueBall.position.z = 0.1;
 blueBall.name = 'blueBall';
 balls.add(blueBall);
 const yellowBall = new THREE.Mesh(ballGeo, blackMat);
-yellowBall.position.x = -1.2;
-yellowBall.position.z = 0.05;
-yellowBall.name = 'blackBall';
+yellowBall.position.x = -0.2;
+yellowBall.position.z = 0.65;
+yellowBall.name = 'yellowBall';
+yellowBall.castShadow = true;
 balls.add(yellowBall);
 
 balls.position.y = 0.1 + BALL_RADIUS;
@@ -116,33 +128,33 @@ const pocketGeo = new THREE.CylinderGeometry(BALL_RADIUS + .05, BALL_RADIUS, .00
 const backLeft = new THREE.Mesh(pocketGeo, pocketMat);
 backLeft.position.x = -1.92;
 backLeft.position.z = -.92;
-backLeft.position.y = -0.10;
+backLeft.position.y = -0.05;
 pockets.add(backLeft);
 const backRight = new THREE.Mesh(pocketGeo, pocketMat);
 backRight.position.x = 1.92;
 backRight.position.z = .92;
-backRight.position.y = -0.10;
+backRight.position.y = -0.05;
 pockets.add(backRight);
 const frontRight = new THREE.Mesh(pocketGeo, pocketMat);
 frontRight.position.x = 1.92;
 frontRight.position.z = -0.92;
-frontRight.position.y = -0.10;
+frontRight.position.y = -0.05;
 
 pockets.add(frontRight);
 const frontLeft = new THREE.Mesh(pocketGeo, pocketMat);
 frontLeft.position.x = -1.92;
 frontLeft.position.z = 0.92;
-frontLeft.position.y = -0.10;
+frontLeft.position.y = -0.05;
 
 pockets.add(frontLeft);
 const backMiddle = new THREE.Mesh(pocketGeo, pocketMat);
 backMiddle.position.z = -0.92;
-backMiddle.position.y = -0.10;
+backMiddle.position.y = -0.05;
 
 pockets.add(backMiddle);
 const frontMiddle = new THREE.Mesh(pocketGeo, pocketMat);
 frontMiddle.position.z = 0.92;
-frontMiddle.position.y = -0.10;
+frontMiddle.position.y = -0.05;
 
 pockets.add(frontMiddle);
 
@@ -225,13 +237,13 @@ function shoot(event) {
 
     center.project(camera);
     var vector = new THREE.Vector2();
-    vector.x = Math.round( (   center.x + 1 ) * window.innerWidth / 2 );
-    vector.y = Math.round( ( - center.y + 1 ) * window.innerHeight / 2 );
+    vector.x = Math.round((center.x + 1) * window.innerWidth / 2);
+    vector.y = Math.round((- center.y + 1) * window.innerHeight / 2);
     console.log(center);
     console.log(mouse);
-    
+
     var rad = mouse.angleTo(center);
-    var deg = rad * (180/3.14);
+    var deg = rad * (180 / 3.14);
     console.log(vector);
     console.log(xy);
 
@@ -240,9 +252,9 @@ function shoot(event) {
     x.x += 100;
     x.y += 100;
     var vectorDir = vector.clone().sub(x).normalize();
-    console.log("Dir",xyDir);
-    deg = xyDir.angleTo(vectorDir) * (180/3.14);
-    console.log("deg",deg);
+    console.log("Dir", xyDir);
+    deg = xyDir.angleTo(vectorDir) * (180 / 3.14);
+    console.log("deg", deg);
     direction.normalize();
     // console.log(direction.normalize());
     cueModel.dV = direction.clone().normalize().multiplyScalar(F);
@@ -255,20 +267,20 @@ function shoot(event) {
 //     // Get coordinates relative to center point
 //     absPointX -= centerX;
 //     absPointY -= centerY;
-    
+
 //     // Convert degrees to radians
 //     var radians = rotationDegrees * (Math.PI / 180);
-    
+
 //     // Translate rotation
 //     var cos = Math.cos(radians);
 //     var sin = Math.sin(radians);
 //     var x = (absPointX * cos) + (absPointY * sin);
 //     var y = (-absPointX * sin) + (absPointY * cos);
-    
+
 //     // Round to nearest hundredths place
 //     x = Math.floor(x * 100) / 100;
 //     y = Math.floor(y * 100) / 100;
-    
+
 //     return {x, y};
 // }
 
@@ -361,7 +373,7 @@ function main() {
         raycaster.ray.intersectPlane(plane, intersection);
 
         // Update the line's endpoint
-        mouse.set(pointer.x,pointer.y,0.5);
+        mouse.set(pointer.x, pointer.y, 0.5);
         // console.log(mouse);
         // mouse.unproject(camera);
         // mouse.projectOnPlane(new THREE.Vector3(0,1,0));
@@ -373,10 +385,10 @@ function main() {
         mouse2.y += pointer.y;
         // console.log(mouse2);
         second = center.clone();
-        
-        
-        second.x +=  mouse2.x*(1+Math.cos(mouse2.x));
-        second.z +=  mouse2.y*(1+Math.sin(mouse2.y));
+
+
+        second.x += mouse2.x * (1 + Math.cos(mouse2.x));
+        second.z += mouse2.y * (1 + Math.sin(mouse2.y));
         lineGeometry.setFromPoints([center, second]);
         // lineGeometry.lookAt(intersection);
         const intersects = raycaster.intersectObject(table);
