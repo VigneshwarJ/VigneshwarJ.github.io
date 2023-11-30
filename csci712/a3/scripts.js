@@ -1,8 +1,3 @@
-/*
- * CSCI-712 Assignment 0: Framework
- * Ram Zallan
- */
-
 const CANVAS_SIZE = 800;
 const BALL_RADIUS = 0.06;
 const BALL_MASS = 170;
@@ -262,27 +257,6 @@ function shoot(event) {
     // console.log(cueModel.dV);
     cueModel.dV;
 }
-
-// function translatePoint(absPointX, absPointY, centerX, centerY, rotationDegrees=0) {
-//     // Get coordinates relative to center point
-//     absPointX -= centerX;
-//     absPointY -= centerY;
-
-//     // Convert degrees to radians
-//     var radians = rotationDegrees * (Math.PI / 180);
-
-//     // Translate rotation
-//     var cos = Math.cos(radians);
-//     var sin = Math.sin(radians);
-//     var x = (absPointX * cos) + (absPointY * sin);
-//     var y = (-absPointX * sin) + (absPointY * cos);
-
-//     // Round to nearest hundredths place
-//     x = Math.floor(x * 100) / 100;
-//     y = Math.floor(y * 100) / 100;
-
-//     return {x, y};
-// }
 
 function main() {
     const clock = new THREE.Clock();
