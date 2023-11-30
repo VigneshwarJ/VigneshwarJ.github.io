@@ -45,9 +45,21 @@ const leaderMat = new THREE.MeshPhongMaterial({ color: 0xcc2244 });
 leaderMat.shininess = 1;
 const leader = new THREE.Mesh(leaderGeo, leaderMat);
 leader.position.y = -5;
+leader.velocity = new THREE.Vector3(0.05, 0.05, 0.05);
 scene.add(leader);
 leader.castShadow = true;
+// const geometry = new THREE.PlaneGeometry(5, 5);
+// geometry.rotateX(90);
+// geometry.position.y = -5;
+// Create a material object
+const material = new THREE.MeshBasicMaterial({color: 0x0000ff, transparent: true, opacity: 0.5});
 
+// Create a mesh object
+// const cube = new THREE.Mesh(geometry, material);
+// cube.recieveShadow = true;
+
+// Add the cube to the scene
+// scene.add(cube);
 let c = 0x00ff00;
 let y = 0xffff00;
 let z = 0xffffff;
@@ -104,6 +116,21 @@ $("document").ready(() => {
     });
 });
 
+function updateleader() {
+    // Update the leader position
+    leader.position.add(leader.velocity);
+  
+    // Check the leader boundaries and bounce if needed
+    if (leader.position.x > 5 || leader.position.x < -5) {
+      leader.velocity.x *= -1;
+    }
+    if (leader.position.y > 5 || leader.position.y < -5) {
+      leader.velocity.y *= -1;
+    }
+    if (leader.position.z > 5 || leader.position.z < -5) {
+      leader.velocity.z *= -1;
+    }
+  }
 let t = 0;
 let xSign = 1;
 let ySign = 1;
@@ -111,15 +138,18 @@ let ySign = 1;
 function main() {
     function render() {
         const delta = clock.getDelta();
-        leader.position.y += ySign * 0.015;
-        leader.position.x += xSign * 0.1;
-        if (leader.position.x < -6 || leader.position.x > 6) {
-            xSign *= -1;
-        }
-        if (leader.position.y < -6 || leader.position.y > 6) {
-            ySign *= -1;
-        }
-
+        // leader.position.y += ySign * 0.015;
+        // leader.position.x += xSign * 0.1;
+        updateleader();
+        // if (leader.position.x < -6 || leader.position.x > 6) {
+        //     xSign *= -1;
+        // }
+        // if (leader.position.y < -6 || leader.position.y > 6) {
+        //     ySign *= -1;
+        // }
+        // if (leader.position.z > 10 || leader.position.z < -10) {
+        //     leader.velocity.z *= -1;
+        //   }
         for (const boid of boids.children) {
             const pathToLeader = leader.position.clone().sub(boid.position);
 
