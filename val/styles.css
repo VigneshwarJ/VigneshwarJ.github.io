@@ -1,0 +1,894 @@
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(180deg, #87CEEB 0%, #B0E0E6 30%, #E0F6FF 60%, #F0F8FF 100%);
+    position: relative;
+}
+
+/* ============================================
+   BACKGROUND ELEMENTS
+   ============================================ */
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Sun */
+.sun {
+    position: absolute;
+    top: 8%;
+    right: 15%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #FFE4B5 0%, #FFD700 40%, #FFA500 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 60px rgba(255, 215, 0, 0.6),
+        0 0 100px rgba(255, 165, 0, 0.4);
+    animation: sunGlow 4s ease-in-out infinite;
+}
+
+@keyframes sunGlow {
+    0%, 100% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), 0 0 100px rgba(255, 165, 0, 0.4); }
+    50% { box-shadow: 0 0 80px rgba(255, 215, 0, 0.8), 0 0 120px rgba(255, 165, 0, 0.5); }
+}
+
+/* Clouds */
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    animation: cloudFloat 20s ease-in-out infinite;
+}
+
+.cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+}
+
+.cloud-1 {
+    top: 10%;
+    left: -10%;
+    width: 100px;
+    height: 40px;
+    animation-delay: 0s;
+}
+.cloud-1::before { width: 50px; height: 50px; top: -25px; left: 15px; }
+.cloud-1::after { width: 60px; height: 60px; top: -30px; left: 45px; }
+
+.cloud-2 {
+    top: 15%;
+    left: 60%;
+    width: 120px;
+    height: 45px;
+    animation-delay: -5s;
+}
+.cloud-2::before { width: 60px; height: 55px; top: -30px; left: 20px; }
+.cloud-2::after { width: 70px; height: 65px; top: -35px; left: 55px; }
+
+.cloud-3 {
+    top: 25%;
+    left: 30%;
+    width: 80px;
+    height: 35px;
+    animation-delay: -10s;
+}
+.cloud-3::before { width: 45px; height: 45px; top: -22px; left: 10px; }
+.cloud-3::after { width: 55px; height: 50px; top: -28px; left: 35px; }
+
+@keyframes cloudFloat {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(30px); }
+    100% { transform: translateX(0); }
+}
+
+/* Mountains/Hills */
+.mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
+}
+
+.mountain {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+}
+
+.mountain-1 {
+    left: -10%;
+    border-left: 40vw solid transparent;
+    border-right: 40vw solid transparent;
+    border-bottom: 40vh solid #7CB342;
+}
+
+.mountain-2 {
+    left: 25%;
+    border-left: 38vw solid transparent;
+    border-right: 38vw solid transparent;
+    border-bottom: 50vh solid #8BC34A;
+}
+
+.mountain-3 {
+    right: -20%;
+    border-left: 45vw solid transparent;
+    border-right: 45vw solid transparent;
+    border-bottom: 38vh solid #9CCC65;
+}
+
+/* Grass */
+.grass {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    background: linear-gradient(to top, #7CB342 0%, #8BC34A 50%, #9CCC65 100%);
+}
+
+/* Flowers */
+.flower {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: flowerSway 3s ease-in-out infinite;
+}
+
+@keyframes flowerSway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+/* ============================================
+   FLOATING HEARTS
+   ============================================ */
+
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatUp 10s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   MOCHA BEARS
+   ============================================ */
+
+.mocha-bear {
+    position: fixed;
+    z-index: 5;
+}
+
+.mocha-bear.left {
+    left: 5%;
+    bottom: 18%;
+}
+
+.mocha-bear.right {
+    right: 5%;
+    bottom: 22%;
+}
+
+.bear-container {
+    position: relative;
+    width: 120px;
+    height: 140px;
+}
+
+.bear-body {
+    position: relative;
+    animation: bearBounce 2s ease-in-out infinite;
+}
+
+@keyframes bearBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.bear-svg {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
+}
+
+/* Bear floating hearts */
+.bear-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: bearHeartFloat 2s ease-out infinite;
+    opacity: 0;
+}
+
+.bear-heart:nth-child(2) { left: 30%; top: 0; animation-delay: 0s; }
+.bear-heart:nth-child(3) { left: 50%; top: 5%; animation-delay: 0.5s; }
+.bear-heart:nth-child(4) { left: 70%; top: 0; animation-delay: 1s; }
+
+@keyframes bearHeartFloat {
+    0% { opacity: 0; transform: translateY(0) scale(0.5); }
+    20% { opacity: 1; transform: translateY(-10px) scale(1); }
+    100% { opacity: 0; transform: translateY(-50px) scale(0.8); }
+}
+
+/* Bear arms */
+.bear-arm {
+    position: absolute;
+    width: 25px;
+    height: 35px;
+    background: #A0522D;
+    border-radius: 50%;
+    animation: armWave 1.5s ease-in-out infinite;
+}
+
+.bear-arm.left-arm {
+    left: -5px;
+    top: 55px;
+    transform-origin: top center;
+}
+
+.bear-arm.right-arm {
+    right: -5px;
+    top: 55px;
+    transform-origin: top center;
+    animation-delay: 0.75s;
+}
+
+.mocha-bear.right .bear-arm {
+    background: #D2B48C;
+}
+
+@keyframes armWave {
+    0%, 100% { transform: rotate(-20deg); }
+    50% { transform: rotate(20deg); }
+}
+
+/* Speech bubble */
+.speech-bubble {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #e57373;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    white-space: nowrap;
+    animation: bubblePop 3s ease-in-out infinite;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid white;
+}
+
+@keyframes bubblePop {
+    0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Question Card */
+.question-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border-radius: 35px;
+    padding: 2.5rem 3.5rem;
+    border: 3px solid rgba(229, 115, 115, 0.3);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.1),
+        0 0 80px rgba(229, 115, 115, 0.1);
+    max-width: 500px;
+    animation: cardFloat 4s ease-in-out infinite;
+    position: relative;
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.bear-icon {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    animation: bearIconBounce 1.5s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes bearIconBounce {
+    0%, 100% { transform: scale(1) rotate(-5deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+}
+
+.heart-row {
+    margin-bottom: 1rem;
+}
+
+.heart-icon {
+    font-size: 2rem;
+    animation: heartBeat 1.2s ease-in-out infinite;
+    display: inline-block;
+    margin: 0 0.3rem;
+}
+
+.heart-icon:nth-child(2) { animation-delay: 0.2s; }
+.heart-icon:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.pattu-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.2rem;
+    background: linear-gradient(135deg, #e57373, #ef5350, #e53935);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.3rem;
+    filter: drop-shadow(0 2px 4px rgba(229, 115, 115, 0.3));
+}
+
+.question {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #5D4037;
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+}
+
+.sub-text {
+    color: #795548;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.buttons-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Yes Button */
+.btn-yes {
+    padding: 1rem 3rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #e57373 0%, #ef5350 50%, #f44336 100%);
+    color: white;
+    box-shadow: 
+        0 10px 30px rgba(229, 115, 115, 0.4),
+        0 4px 12px rgba(229, 115, 115, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.btn-yes:hover {
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 
+        0 15px 40px rgba(229, 115, 115, 0.5),
+        0 8px 20px rgba(229, 115, 115, 0.4);
+}
+
+.btn-yes::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -50%; }
+    100% { left: 150%; }
+}
+
+/* No Button */
+.btn-no {
+    padding: 0.9rem 2.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    border: 2px solid #BDBDBD;
+    border-radius: 50px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.9);
+    color: #757575;
+    transition: all 0.15s ease;
+    position: relative;
+}
+
+.btn-no:hover {
+    border-color: #e57373;
+    color: #e57373;
+    background: rgba(229, 115, 115, 0.05);
+}
+
+.btn-no.escaping {
+    position: fixed !important;
+    transition: left 0.12s ease-out, top 0.12s ease-out, transform 0.12s ease-out;
+    z-index: 100;
+}
+
+.btn-no.flying-away {
+    transition: all 1s ease-in !important;
+    opacity: 0;
+    transform: translateY(-200vh) rotate(720deg) scale(0.1) !important;
+}
+
+/* ============================================
+   FUNNY MESSAGE
+   ============================================ */
+
+.funny-message {
+    position: fixed;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #5D4037;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(229, 115, 115, 0.3);
+}
+
+.funny-message.show {
+    opacity: 1;
+    animation: bounceIn 0.4s ease;
+}
+
+@keyframes bounceIn {
+    0% { transform: translateX(-50%) scale(0.5) translateY(-15px); opacity: 0; }
+    70% { transform: translateX(-50%) scale(1.05) translateY(3px); }
+    100% { transform: translateX(-50%) scale(1) translateY(0); opacity: 1; }
+}
+
+/* ============================================
+   SUCCESS SCREEN
+   ============================================ */
+
+.success-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e57373 0%, #ef9a9a 30%, #ffcdd2 60%, #fce4ec 100%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease;
+}
+
+.success-screen.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.success-bears {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.success-bear {
+    font-size: 4rem;
+    animation: successBearDance 0.5s ease-in-out infinite alternate;
+}
+
+.success-bear:nth-child(1) { animation-delay: 0s; }
+.success-bear:nth-child(2) { animation-delay: 0.15s; }
+.success-bear:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes successBearDance {
+    0% { transform: translateY(0) rotate(-8deg); }
+    100% { transform: translateY(-15px) rotate(8deg); }
+}
+
+.success-heart {
+    font-size: 5rem;
+    animation: successBeat 0.4s ease-in-out infinite;
+    margin-bottom: 0.5rem;
+}
+
+@keyframes successBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+}
+
+.success-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: white;
+    margin: 0.5rem 0;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.date-message {
+    font-size: 1.4rem;
+    color: white;
+    opacity: 0.95;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+/* ============================================
+   CONFETTI
+   ============================================ */
+
+.confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1001;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    animation: confettiFall 3s ease-out forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100px) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   CURSOR TRAIL
+   ============================================ */
+
+.cursor-heart {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.2rem;
+    z-index: 9999;
+    animation: cursorHeartFade 0.8s ease-out forwards;
+}
+
+@keyframes cursorHeartFade {
+    0% { opacity: 1; transform: scale(1) translateY(0); }
+    100% { opacity: 0; transform: scale(0.5) translateY(-25px); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .mocha-bear.left {
+        left: 2%;
+        bottom: 12%;
+    }
+
+    .mocha-bear.right {
+        right: 2%;
+        bottom: 15%;
+    }
+
+    .bear-container {
+        width: 100px;
+        height: 120px;
+    }
+
+    .bear-svg {
+        width: 85px;
+        height: 85px;
+    }
+
+    .speech-bubble {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .question-card {
+        padding: 1.8rem 1.2rem;
+        margin: 0.5rem;
+        border-radius: 25px;
+        max-width: 95%;
+    }
+
+    .pattu-name {
+        font-size: 2.2rem;
+    }
+
+    .question {
+        font-size: 1.6rem;
+    }
+
+    .bear-icon {
+        font-size: 2.5rem;
+    }
+
+    .heart-icon {
+        font-size: 1.3rem;
+    }
+
+    .sub-text {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .buttons-wrapper {
+        min-height: 60px;
+    }
+
+    .buttons {
+        gap: 1.5rem;
+    }
+
+    .btn-yes {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+
+    .btn-no {
+        padding: 0.7rem 1.8rem;
+        font-size: 0.95rem;
+    }
+
+    /* Keep No button visible and responsive on mobile */
+    .btn-no.escaping {
+        transition: left 0.15s ease-out, top 0.15s ease-out, transform 0.15s ease-out;
+    }
+
+    .success-message {
+        font-size: 2.2rem;
+        padding: 0 1rem;
+    }
+
+    .success-bear {
+        font-size: 2.2rem;
+    }
+
+    .success-heart {
+        font-size: 3.5rem;
+    }
+
+    .date-message {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    /* Hide bears on mobile */
+    .mocha-bear {
+        display: none;
+    }
+
+    /* Smaller sun on mobile */
+    .sun {
+        width: 50px;
+        height: 50px;
+        top: 5%;
+        right: 10%;
+    }
+
+    /* Adjust clouds */
+    .cloud-1, .cloud-2, .cloud-3 {
+        transform: scale(0.7);
+    }
+
+    /* Smaller floating hearts */
+    .floating-heart {
+        font-size: 1.5rem;
+    }
+
+    .funny-message {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+        top: 8%;
+        max-width: 90%;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 400px) {
+    .question-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .pattu-name {
+        font-size: 1.9rem;
+    }
+
+    .question {
+        font-size: 1.4rem;
+    }
+
+    .bear-icon {
+        font-size: 2rem;
+    }
+
+    .heart-icon {
+        font-size: 1.1rem;
+    }
+
+    .btn-yes {
+        padding: 0.7rem 1.6rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-no {
+        padding: 0.6rem 1.4rem;
+        font-size: 0.85rem;
+    }
+
+    .success-message {
+        font-size: 1.8rem;
+    }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) {
+    .question-card {
+        padding: 1rem 2rem;
+    }
+
+    .bear-icon {
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .heart-row {
+        margin-bottom: 0.5rem;
+    }
+
+    .pattu-name {
+        font-size: 2rem;
+    }
+
+    .question {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .sub-text {
+        margin-bottom: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .mocha-bear {
+        display: none;
+    }
+
+    .funny-message {
+        top: 5%;
+    }
+}

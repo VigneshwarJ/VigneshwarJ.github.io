@@ -1,80 +1,854 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Metadata -->
-        <meta charset="utf-8">
-        
-        <!-- Mobile Specific Metas -->
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-        <meta name="keywords" content="programmer, coding, console, cv,  haskell, OpenGL, c, c++, games developer, software developer, english" />
-        <meta name="description" content="Games and software developer interested in c++ engine development." />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="programmer, coding, ray tracing, animation, graphics, OpenGL, Vulkan, c, c++, games developer, software developer, pilot, skydiver" />
+    <meta name="description" content="Graphics programmer specializing in ray tracing, animation, and real-time rendering. Licensed pilot and skydiver." />
+    <title>Vigneshwar Jayakumar | Graphics Programmer & Aviator</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Icon -->
+    <link rel="icon" type="image/png" href="./data/images/icon_trans.png">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-bg"></div>
+    <canvas id="particles-canvas"></canvas>
 
-        <title>Vigneshwar Jayakumar</title>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <i class="fas fa-plane"></i> VJ
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#career">Career</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#hobbies">Aviation</a></li>
+        </ul>
+    </nav>
 
-
-        <!-- External file links for this html page  -->
-        
-        <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="styles/skeleton.css">
-        <link rel="stylesheet" type="text/css" href="styles/landing.css">
-        <link rel="stylesheet" type="text/css" href="styles/career.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <!-- Project related css files --> 
-        <link rel="stylesheet" type="text/css" href="./styles/project_styles/Clarissa.css"/>
-        <link rel="stylesheet" type="text/css" href="./styles/project_styles/RealTimeGI.css"/>
-        <link rel="stylesheet" type="text/css" href="./styles/project_styles/RayTracer.css"/>
-        <link rel="stylesheet" type="text/css" href="./styles/project_styles/game_tech.css"/>
-        <link rel="stylesheet" type="text/css" href="./styles/project_styles/PGenerator.css"/>
-
-        <!-- Icon -->
-        <link rel="icon" type="image/png" href="./data/images/icon_trans.png">
-
-        <!-- Scripts -->
-        <script src="scripts/quick_links.js"></script>
-
-        <!-- Add google analytics data -->
-
-    </head>
-
-    <!-- Add a custom container class implementation here.... -->
-    <body id="top">  
-        <div class="container" style="margin-top: 1%" align="center">   
-            <div id="title">Vigneshwar Jayakumar</div>            
-            <!-- <img class="landing_logo" src="./data/images/portrait.png" alt="Portrait"> -->
-            <div id="quick_links">
-
-                <a href="https://github.com/VigneshwarJ" target="_blank"><i class="fa fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/vigneshwar-jayakumar/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/vikkyartworks/" target="_blank"><i class="fa fa-instagram"></i></a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="glitch-title">Vigneshwar Jayakumar</h1>
+            <p class="subtitle">&lt; GPU Compiler Engineer • Graphics Programmer • Pilot /&gt;</p>
+            <p class="tagline">
+                Sr GPU Compiler Engineer at AMD. Passionate about 3D rendering, ray tracing, GPU optimization, and computer animation. 
+                When not crafting pixels and optimizing shaders, you'll find me soaring through the skies.
+            </p>
+            <div class="social-links">
+                <a href="https://github.com/VigneshwarJ" target="_blank" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/vigneshwar-jayakumar/" target="_blank" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/vikkyartworks/" target="_blank" class="social-link" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
-            <hr>
-            <div id="about_me">Hi there and thanks for stopping by! My name is Vigneshwar,
-                 i'm a passionate programmer who loves 3D rendering , animation and anything related to graphics.</div>
-            <hr>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-            <section class="buttons">
-                <div class="button_container">
-                    <div id="projects-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 0;">Projects</div> 
-                    <div id="career-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 0;">Career</div> 
-                    <div id="skills-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 0;">Skills</div> 
-                    <div id="research-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 0;">Research</div> 
-                    <div id="artworks-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 0;">Artworks</div> 
+    <!-- Career Section -->
+    <section id="career" class="reveal">
+        <h2 class="section-title">Career</h2>
+        <p class="section-subtitle">Education & Professional Experience</p>
+        
+        <div class="career-container">
+            <!-- Education -->
+            <div class="career-column">
+                <h3 class="career-heading"><i class="fas fa-graduation-cap"></i> Education</h3>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Aug 2021 - Dec 2023</div>
+                            <h4 class="timeline-title">Rochester Institute of Technology</h4>
+                            <p class="timeline-subtitle">MS Computer Science</p>
+                            <p class="timeline-description">Focus on Computer Graphics, Computer Vision, and GPGPU Compilers</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2013 - 2017</div>
+                            <h4 class="timeline-title">Kumaraguru College of Technology</h4>
+                            <p class="timeline-subtitle">BS Aeronautical Engineering</p>
+                            <p class="timeline-description">First Class Honours, Anna University, Chennai, India</p>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+            
+            <!-- Work Experience -->
+            <div class="career-column">
+                <h3 class="career-heading"><i class="fas fa-briefcase"></i> Work Experience</h3>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Jan 2024 - Present</div>
+                            <div class="company-header">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/AMD_Logo.svg/200px-AMD_Logo.svg.png" alt="AMD" class="company-logo">
+                                <h4 class="timeline-title">AMD</h4>
+                            </div>
+                            <p class="timeline-subtitle">Sr Compiler Software Engineer GPU</p>
+                            <p class="timeline-description">GPU compiler development and optimization</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">May 2023 - Aug 2023</div>
+                            <div class="company-header">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/AMD_Logo.svg/200px-AMD_Logo.svg.png" alt="AMD" class="company-logo">
+                                <h4 class="timeline-title">AMD</h4>
+                            </div>
+                            <p class="timeline-subtitle">GPU Compiler Intern</p>
+                            <p class="timeline-description">GPU compiler development and optimization</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Sept 2022 - Dec 2022</div>
+                            <div class="company-header">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/200px-Intel_logo_%282006-2020%29.svg.png" alt="Intel" class="company-logo">
+                                <h4 class="timeline-title">Intel Corporation</h4>
+                            </div>
+                            <p class="timeline-subtitle">DirectX 12 Driver Developer Intern</p>
+                            <p class="timeline-description">Worked on DirectX 12 graphics driver development</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">May 2022 - Aug 2022</div>
+                            <div class="company-header">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Dassault_Syst%C3%A8mes_logo.svg/200px-Dassault_Syst%C3%A8mes_logo.svg.png" alt="Dassault Systèmes" class="company-logo">
+                                <h4 class="timeline-title">Dassault Systèmes</h4>
+                            </div>
+                            <p class="timeline-subtitle">R&D Developer Intern</p>
+                            <p class="timeline-description">Research and development for 3D software solutions</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Aug 2020 - Jul 2021</div>
+                            <div class="company-header">
+                                <img src="https://peopletech.com/wp-content/uploads/2023/02/cropped-People-Tech-Favicon.png" alt="People Tech Group" class="company-logo">
+                                <h4 class="timeline-title">People Tech Group</h4>
+                            </div>
+                            <p class="timeline-subtitle">Graphics Software Engineer</p>
+                            <p class="timeline-description">Graphics software development and optimization</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Feb 2020 - May 2020</div>
+                            <div class="company-header">
+                                <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/2/21/Nvidia_logo.svg/200px-Nvidia_logo.svg.png" alt="NVIDIA" class="company-logo">
+                                <h4 class="timeline-title">NVIDIA</h4>
+                            </div>
+                            <p class="timeline-subtitle">Contract Software Engineer</p>
+                            <p class="timeline-description">GPU software development and graphics programming</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">May 2017 - Dec 2019</div>
+                            <div class="company-header">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/200px-Accenture.svg.png" alt="Accenture" class="company-logo">
+                                <h4 class="timeline-title">Accenture</h4>
+                            </div>
+                            <p class="timeline-subtitle">Software Developer</p>
+                            <p class="timeline-description">Software development and engineering solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="reveal">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">Browse through a selection of my projects</p>
+        
+        <!-- Tab Navigation -->
+        <div class="project-tabs">
+            <button class="project-tab active" data-tab="graphics">
+                <i class="fas fa-cube"></i> Graphics
+            </button>
+            <button class="project-tab" data-tab="raytracing">
+                <i class="fas fa-lightbulb"></i> Ray Tracing
+            </button>
+            <button class="project-tab" data-tab="animation">
+                <i class="fas fa-running"></i> Animation
+            </button>
+            <button class="project-tab" data-tab="tools">
+                <i class="fas fa-tools"></i> Tools & Compilers
+            </button>
+            <button class="project-tab" data-tab="applications">
+                <i class="fas fa-mobile-alt"></i> Applications
+            </button>
+        </div>
+        
+        <!-- Graphics Projects Tab -->
+        <div class="tab-content active" id="graphics-tab">
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="imgs/rendered_sphere.png" alt="Complete Ray Tracer" class="project-image">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Complete Ray Tracer</h3>
+                        <p class="project-description">Physically-based renderer with Path Tracing and Photon Mapping. Supports BRDF, reflection, refraction, and Turner Whitted rendering.</p>
+                        <div class="project-tags">
+                            <span class="tag">Vulkan</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Ray Tracing</span>
+                        </div>
+                        <a href="https://github.com/VigneshwarJ/CompleteRayTracer" target="_blank" class="project-link">
+                            View on GitHub <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="video-container" style="background: linear-gradient(135deg, #1a2a4a, #2a1a3a); display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-lightbulb" style="font-size: 4rem; color: #00f5ff;"></i>
+                        </div>
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">RealTime GI</h3>
+                        <p class="project-description">Real-time global illumination renderer using DirectX 12. Implements diffuse GI with raytraced irradiance fields.</p>
+                        <div class="project-tags">
+                            <span class="tag">DirectX 12</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Real-time</span>
+                        </div>
+                        <a href="csci711/project/midterm.pdf" target="_blank" class="project-link">
+                            View Report <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="video-container" style="background: linear-gradient(135deg, #2a1a4a, #1a3a2a); display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-shapes" style="font-size: 4rem; color: #ff00ff;"></i>
+                        </div>
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Spicy Raymarcher</h3>
+                        <p class="project-description">Raymarcher art tool using mixed primitive shapes. Inspired by Inigo Quilez's stunning artwork and SDF techniques.</p>
+                        <div class="project-tags">
+                            <span class="tag">C++</span>
+                            <span class="tag">SDF</span>
+                            <span class="tag">Art Tool</span>
+                        </div>
+                        <a href="https://github.com/VigneshwarJ/SpicyRaymarcher" target="_blank" class="project-link">
+                            View on GitHub <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="video-container" style="background: linear-gradient(135deg, #1a3a3a, #2a2a1a); display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-mountain" style="font-size: 4rem; color: #00ff88;"></i>
+                        </div>
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Procedural Generator</h3>
+                        <p class="project-description">Open world generator using procedural techniques. Features Perlin noise terrain, L-system vegetation, and texture splatting.</p>
+                        <div class="project-tags">
+                            <span class="tag">OpenGL</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Procedural</span>
+                        </div>
+                        <a href="https://github.com/VigneshwarJ/ProceduralGenerator" target="_blank" class="project-link">
+                            View on GitHub <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tools & Compilers Tab -->
+        <div class="tab-content" id="tools-tab">
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="video-container" style="background: linear-gradient(135deg, #1a1a3a, #3a1a2a); display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-code" style="font-size: 4rem; color: #ffff00;"></i>
+                        </div>
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">LangF - Functional Compiler</h3>
+                        <p class="project-description">A functional programming language created from scratch to understand compiler construction principles and techniques.</p>
+                        <div class="project-tags">
+                            <span class="tag">Standard ML</span>
+                            <span class="tag">Compiler</span>
+                            <span class="tag">Functional</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ray Tracing Tab -->
+        <div class="tab-content" id="raytracing-tab">
+            <div class="course-header">
+                <div class="course-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="course-info">
+                    <h3>CSCI-711: Global Illumination</h3>
+                    <p>Physically-based renderer with path tracing, photon mapping, and advanced shading</p>
+                </div>
+                <a href="csci711/index.html" class="course-link">View All Checkpoints →</a>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="csci711/rt7/img1.png" alt="Tone Reproduction" class="project-image">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Tone Reproduction</h3>
+                        <p class="project-description">Reinhard and Ward tone mapping operators with varying luminance levels</p>
+                        <div class="project-tags">
+                            <span class="tag">HDR</span>
+                            <span class="tag">Reinhard</span>
+                            <span class="tag">Ward</span>
+                        </div>
+                        <a href="csci711/rt7/index.html" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="csci711/rt6/img1.png" alt="Transmission" class="project-image">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Transmission & Refraction</h3>
+                        <p class="project-description">Light transmission through transparent materials with Snell's law</p>
+                        <div class="project-tags">
+                            <span class="tag">Refraction</span>
+                            <span class="tag">Glass</span>
+                            <span class="tag">IOR</span>
+                        </div>
+                        <a href="csci711/rt6/index.html" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="csci711/rt5/img1.png" alt="Reflection" class="project-image">
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Reflection</h3>
+                        <p class="project-description">Mirror reflections and recursive ray tracing</p>
+                        <div class="project-tags">
+                            <span class="tag">Mirror</span>
+                            <span class="tag">Recursive</span>
+                        </div>
+                        <a href="csci711/rt5/index.html" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Scripts used in top body -->
-        <script src="scripts/text_animation.js"></script>
-    </body>
+        <!-- Animation Tab -->
+        <div class="tab-content" id="animation-tab">
+            <div class="course-header">
+                <div class="course-icon" style="background: linear-gradient(135deg, #ff00ff, #ffff00);">
+                    <i class="fas fa-running"></i>
+                </div>
+                <div class="course-info">
+                    <h3>CSCI-712: Computer Animation</h3>
+                    <p>Keyframing, motion capture, physics simulation, and particle systems</p>
+                </div>
+                <a href="csci712/index.html" class="course-link">View All Assignments →</a>
+            </div>
 
-    <div id="bottom">
-        <!-- Data_Labels -->
-        <div id="data_selection_area" class="container kd-selection-content" style="opacity: 0;"></div>
-        <div id="project_data_area" class="container kd-selection-content" style="opacity: 0;"></div>
-        <script src="scripts/button_nav_selection.js"></script>
-        <script src="scripts/button_nav_proj.js"></script>
-        <script src="scripts/button_nav_career.js"></script>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="video-container">
+                            <video autoplay muted loop playsinline>
+                                <source src="csci712/a2/jog.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Motion Capture</h3>
+                        <p class="project-description">Articulated figure motion with jogging, waving, and greeting animations</p>
+                        <div class="project-tags">
+                            <span class="tag animation">MoCap</span>
+                            <span class="tag animation">Skeletal</span>
+                        </div>
+                        <a href="csci712/a2/index.html" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
 
-    </div>
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="video-container" style="background: linear-gradient(135deg, #2a1a4a, #1a3a2a); display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-bowling-ball" style="font-size: 4rem; color: #ff00ff;"></i>
+                        </div>
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Rigid Body Dynamics</h3>
+                        <p class="project-description">Interactive billiards simulation with collision detection and physics</p>
+                        <div class="project-tags">
+                            <span class="tag animation">Physics</span>
+                            <span class="tag animation">Collision</span>
+                            <span class="tag animation">Interactive</span>
+                        </div>
+                        <a href="csci712/a3/index.html" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="video-container" style="background: linear-gradient(135deg, #1a2a4a, #2a1a3a); display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-users" style="font-size: 4rem; color: #00f5ff;"></i>
+                        </div>
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Group Behaviour</h3>
+                        <p class="project-description">Flocking algorithms and emergent behavior simulation</p>
+                        <div class="project-tags">
+                            <span class="tag animation">Boids</span>
+                            <span class="tag animation">Flocking</span>
+                        </div>
+                        <a href="csci712/a4/index.html" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="video-container" style="background: linear-gradient(135deg, #3a1a2a, #1a2a3a); display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-fire" style="font-size: 4rem; color: #ffff00;"></i>
+                        </div>
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Particle Systems</h3>
+                        <p class="project-description">Dynamic particle effects and simulation techniques</p>
+                        <div class="project-tags">
+                            <span class="tag animation">Particles</span>
+                            <span class="tag animation">Effects</span>
+                        </div>
+                        <a href="csci712/a5/index.html" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications Tab -->
+        <div class="tab-content" id="applications-tab">
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <div class="video-container" style="background: linear-gradient(135deg, #2a1a3a, #1a2a4a); display:flex; align-items:center; justify-content:center;">
+                            <i class="fas fa-vr-cardboard" style="font-size: 4rem; color: #ff6b6b;"></i>
+                        </div>
+                        <div class="project-overlay"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ClarissaAR</h3>
+                        <p class="project-description">AR application showcasing Rochester's legendary Pythodd jazz club in its original location using augmented reality technology.</p>
+                        <div class="project-tags">
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">AR</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="reveal">
+        <h2 class="section-title">Research</h2>
+        <p class="section-subtitle">Academic research and thesis work</p>
+        
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="research-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="research-content">
+                    <h3 class="research-title">Camera Occlusion Removal using NeRF</h3>
+                    <p class="research-type">Thesis Work</p>
+                    <p class="research-description">
+                        Working under Prof. Fawad Ahmad on camera occlusion removal using neural radiance fields 
+                        for safety in traffic intersections. Exploring novel view synthesis and scene reconstruction 
+                        techniques for autonomous vehicle applications.
+                    </p>
+                    <div class="research-tags">
+                        <span class="tag">NeRF</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Deep Learning</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="research-card">
+                <div class="research-icon">
+                    <i class="fas fa-memory"></i>
+                </div>
+                <div class="research-content">
+                    <h3 class="research-title">Memory Defragmentation for Multi-GPU Rendering</h3>
+                    <p class="research-type">Research Project</p>
+                    <p class="research-description">
+                        Working on research under Prof. Chao Peng for developing memory defragmentation algorithms 
+                        for multi-GPU out-of-core rendering. Optimizing memory management for large-scale scene 
+                        rendering across multiple GPUs.
+                    </p>
+                    <div class="research-tags">
+                        <span class="tag">Multi-GPU</span>
+                        <span class="tag">Memory Management</span>
+                        <span class="tag">Rendering</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artworks Section -->
+    <section id="artworks" class="reveal">
+        <h2 class="section-title">Artworks</h2>
+        <p class="section-subtitle">Creative projects and digital art</p>
+        
+        <div class="artworks-container">
+            <div class="artwork-featured">
+                <div class="artwork-video">
+                    <iframe 
+                        src="https://www.youtube.com/embed/-gnXwhsl_eg" 
+                        title="Alternative Realities - Blender Animation" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="artwork-info">
+                    <h3>Alternative Realities</h3>
+                    <p>A Blender animation and VFX breakdown showcasing procedural effects and compositing techniques.</p>
+                    <a href="https://youtu.be/-gnXwhsl_eg" target="_blank" class="artwork-link">
+                        Watch on YouTube <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="artwork-social">
+                <div class="social-banner">
+                    <i class="fab fa-instagram"></i>
+                    <div class="social-info">
+                        <h3>More Artworks on Instagram</h3>
+                        <p>Follow my art journey and see more digital creations</p>
+                        <a href="https://www.instagram.com/vikkyartworks/" target="_blank" class="social-follow-link">
+                            @vikkyartworks <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="reveal">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <p class="section-subtitle">Tools and technologies I work with</p>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4><i class="fas fa-code"></i> Programming Languages</h4>
+                <div class="skill-item">
+                    <div class="skill-name"><span>C++</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Python</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Java</span><span>75%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>GLSL/HLSL</span><span>75%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>C</span><span>65%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 65%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>JavaScript</span><span>50%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 50%;"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4><i class="fas fa-cube"></i> Graphics APIs & Libraries</h4>
+                <div class="skill-item">
+                    <div class="skill-name"><span>DirectX 12</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>OpenGL</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Vulkan</span><span>75%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>OpenCV</span><span>75%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>ImGui</span><span>70%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Assimp</span><span>65%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 65%;"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4><i class="fas fa-tools"></i> Tools</h4>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Visual Studio</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Blender</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Git</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>NVIDIA NSight</span><span>70%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>CMake/Premake</span><span>70%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4><i class="fas fa-gamepad"></i> Frameworks & Engines</h4>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Unreal Engine</span><span>75%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Unity</span><span>75%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>TensorFlow/Keras</span><span>65%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 65%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Qt</span><span>65%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 65%;"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4><i class="fas fa-lightbulb"></i> Rendering Techniques</h4>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Ray Tracing</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Path Tracing</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Photon Mapping</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>PBR</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4><i class="fas fa-language"></i> Spoken Languages</h4>
+                <div class="skill-item">
+                    <div class="skill-name"><span>English</span><span>95%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Tamil</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Telugu</span><span>70%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Kannada</span><span>60%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" style="width: 60%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aviation & Hobbies Section -->
+    <section id="hobbies" class="reveal">
+        <h2 class="section-title">Beyond The Code</h2>
+        <p class="section-subtitle">When I'm not rendering pixels, I'm chasing horizons</p>
+        
+        <div class="hobbies-grid">
+            <div class="hobby-card">
+                <div class="hobby-icon pilot">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <h3>Private Pilot</h3>
+                <p>
+                    There's a unique connection between flying and graphics programming - both require 
+                    understanding complex systems, precise calculations, and a passion for seeing the world 
+                    from a different perspective. As a licensed pilot, I've experienced firsthand how 
+                    mathematics and physics come together to defy gravity.
+                </p>
+                <p style="margin-top: 1rem;">
+                    Flying has taught me patience, precision, and the importance of preparation - skills 
+                    that directly translate to my work in computer graphics and software development.
+                </p>
+                <div class="hobby-stats">
+                    <div class="stat">
+                        <div class="stat-value"><i class="fas fa-certificate"></i></div>
+                        <div class="stat-label">Licensed Pilot</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value"><i class="fas fa-compass"></i></div>
+                        <div class="stat-label">VFR Certified</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hobby-card">
+                <div class="hobby-icon skydiving">
+                    <i class="fas fa-parachute-box"></i>
+                </div>
+                <h3>Skydiver</h3>
+                <p>
+                    If programming teaches you to think in algorithms, skydiving teaches you to trust them. 
+                    The rush of freefall at 120+ mph is unmatched - it's pure physics in motion. 
+                    Every jump is a reminder that the best experiences come from stepping outside your 
+                    comfort zone.
+                </p>
+                <p style="margin-top: 1rem;">
+                    The parallels to graphics work are surprising: understanding aerodynamics is like 
+                    understanding light transport, and landing safely requires the same attention to 
+                    detail as debugging complex shaders.
+                </p>
+                <div class="hobby-stats">
+                    <div class="stat">
+                        <div class="stat-value"><i class="fas fa-wind"></i></div>
+                        <div class="stat-label">Freefall</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value"><i class="fas fa-cloud"></i></div>
+                        <div class="stat-label">Sky's The Limit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Vigneshwar Jayakumar. Crafted with passion for graphics & aviation.</p>
+        <div class="social-links">
+            <a href="https://github.com/VigneshwarJ" target="_blank" class="social-link" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/vigneshwar-jayakumar/" target="_blank" class="social-link" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.instagram.com/vikkyartworks/" target="_blank" class="social-link" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="scripts/main.js"></script>
+</body>
 </html>
