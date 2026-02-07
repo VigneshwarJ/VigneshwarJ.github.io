@@ -755,132 +755,203 @@ section {
 }
 
 /* =============================================
-   CAREER SECTION - TIMELINE
+   CAREER SECTION - CARD BASED LAYOUT
    ============================================= */
-.career-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 3rem;
-    margin-top: 2rem;
-}
-
-.career-column {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 245, 255, 0.1);
-}
-
-.career-heading {
+.career-section-heading {
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: var(--primary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(0, 245, 255, 0.2);
 }
 
-.career-heading i {
+.career-section-heading:first-of-type {
+    margin-top: 0;
+}
+
+.career-section-heading i {
     font-size: 1.3rem;
 }
 
-.timeline {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--primary), var(--secondary));
-}
-
-.timeline-item {
-    position: relative;
+/* Education Cards */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
     margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.timeline-item:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
+.education-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
-.timeline-marker {
-    position: absolute;
-    left: -2rem;
-    top: 5px;
-    width: 12px;
-    height: 12px;
-    background: var(--primary);
-    border-radius: 50%;
-    transform: translateX(-5px);
-    box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+.education-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 245, 255, 0.15);
 }
 
-.timeline-content {
-    position: relative;
+.education-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--bg-dark);
 }
 
-.timeline-date {
+.education-content {
+    flex: 1;
+}
+
+.education-date {
     font-family: 'Space Mono', monospace;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--secondary);
-    margin-bottom: 0.5rem;
+    display: block;
+    margin-bottom: 0.3rem;
 }
 
-.timeline-title {
+.education-school {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.1rem;
     color: var(--text);
     margin-bottom: 0.3rem;
 }
 
-.company-header {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+.education-degree {
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-weight: 600;
     margin-bottom: 0.3rem;
 }
 
-.company-logo {
-    width: 32px;
-    height: 32px;
+.education-details {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Work Experience Cards */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.work-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.work-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 245, 255, 0.15);
+}
+
+.work-card.featured {
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(0, 245, 255, 0.05) 0%, rgba(255, 0, 255, 0.05) 100%);
+}
+
+.work-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.work-card-header {
+    padding: 1.25rem 1.25rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.work-logo {
+    width: 48px;
+    height: 48px;
     object-fit: contain;
     filter: brightness(0) invert(1);
     opacity: 0.9;
     transition: all 0.3s ease;
 }
 
-.timeline-item:hover .company-logo {
+.work-card:hover .work-logo {
     opacity: 1;
-    filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(0, 245, 255, 0.5));
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(0, 245, 255, 0.5));
 }
 
-.company-header .timeline-title {
-    margin-bottom: 0;
+.work-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.timeline-subtitle {
+.work-badge.current {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--bg-dark);
+}
+
+.work-badge.intern {
+    background: rgba(255, 255, 0, 0.2);
+    color: var(--accent);
+    border: 1px solid rgba(255, 255, 0, 0.3);
+}
+
+.work-content {
+    padding: 1rem 1.25rem 1.25rem;
+}
+
+.work-company {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+}
+
+.work-role {
     color: var(--primary);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.work-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--secondary);
+    display: block;
     margin-bottom: 0.5rem;
 }
 
-.timeline-description {
+.work-desc {
     color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.85rem;
+    line-height: 1.4;
 }
 
 /* =============================================
