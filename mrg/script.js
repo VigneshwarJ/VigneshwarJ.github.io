@@ -49,10 +49,10 @@
     });
 
     // ========================================
-    //  Temple Journey - Zoom + Door Open
+    //  Temple Journey - SVG Zoom + Door Open
     // ========================================
     var journey       = document.getElementById('templeJourney');
-    var templeImage   = document.getElementById('templeImage');
+    var gopuramSvg    = document.getElementById('gopuramSvg');
     var heroOverlay   = document.getElementById('heroOverlay');
     var darkOverlay   = document.getElementById('darkOverlay');
     var doorContainer = document.getElementById('doorContainer');
@@ -61,24 +61,20 @@
     var doorReveal    = document.getElementById('doorReveal');
 
     /*
-     * Scroll phases within the 500vh journey section:
+     * Scroll phases (500vh section, 400vh scroll range):
      *
-     *   progress 0.00 - 0.20 : Full temple view, hero text visible
-     *   progress 0.15 - 0.25 : Hero text fades out
-     *   progress 0.20 - 0.52 : Temple image zooms toward the door (scale 1 -> 5)
-     *   progress 0.45 - 0.58 : Dark overlay fades in, temple image dims
-     *   progress 0.54 - 0.62 : Door panels fade in from darkness
-     *   progress 0.62 - 0.92 : Doors rotate open (Y-axis, like real hinges)
-     *   progress 0.60 - 0.85 : Invite content fades in behind doors
-     *   progress 0.92 - 1.00 : Everything settled, doors wide open
+     *   0.00 - 0.18 : Full gopuram SVG visible, hero text overlaid
+     *   0.14 - 0.26 : Hero text fades out
+     *   0.20 - 0.55 : SVG zooms toward door (scale 1 -> 4.5, origin at door)
+     *   0.48 - 0.56 : Dissolve: SVG fades, dark overlay + door panels crossfade in
+     *   0.56 - 0.62 : Door panels fully visible
+     *   0.62 - 0.92 : Doors rotate open on Y-axis
+     *   0.60 - 0.82 : Invite content fades in behind doors
+     *   0.92 - 1.00 : Settled, doors fully open
      */
 
     function easeInOutCubic(t) {
         return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-
-    function lerp(a, b, t) {
-        return a + (b - a) * Math.max(0, Math.min(1, t));
     }
 
     function mapRange(value, inMin, inMax, outMin, outMax) {
@@ -102,37 +98,37 @@
         var scrolledInto = -rect.top;
         var progress = Math.max(0, Math.min(1, scrolledInto / scrollRange));
 
-        // --- Phase 1: Hero overlay fade ---
-        var heroOpacity = mapRange(progress, 0.12, 0.25, 1, 0);
+        // Phase 1: Hero text fade
+        var heroOpacity = mapRange(progress, 0.14, 0.26, 1, 0);
         heroOverlay.style.opacity = heroOpacity;
         heroOverlay.style.pointerEvents = heroOpacity < 0.1 ? 'none' : '';
 
-        // --- Phase 2: Temple zoom ---
-        var zoomProgress = mapRange(progress, 0.18, 0.55, 0, 1);
-        var zoomEased = easeInOutCubic(zoomProgress);
-        var scale = lerp(1, 5.5, zoomEased);
-        var imageOpacity = mapRange(progress, 0.48, 0.60, 1, 0);
-        templeImage.style.transform = 'scale(' + scale + ')';
-        templeImage.style.opacity = imageOpacity;
+        // Phase 2: SVG zoom toward the door entrance
+        var zoomT = mapRange(progress, 0.20, 0.55, 0, 1);
+        var zoomEased = easeInOutCubic(zoomT);
+        var scale = 1 + zoomEased * 3.5;
+        var svgOpacity = mapRange(progress, 0.48, 0.56, 1, 0);
+        gopuramSvg.style.transform = 'scale(' + scale + ')';
+        gopuramSvg.style.opacity = svgOpacity;
 
-        // --- Phase 3: Dark overlay ---
-        var darkOpacity = mapRange(progress, 0.42, 0.58, 0, 1);
-        darkOverlay.style.opacity = darkOpacity;
+        // Phase 3: Dissolve overlay (gentle, short)
+        var darkOpacity = mapRange(progress, 0.48, 0.55, 0, 0.7);
+        var darkFadeOut = mapRange(progress, 0.58, 0.68, 0.7, 0);
+        darkOverlay.style.opacity = progress < 0.58 ? darkOpacity : darkFadeOut;
 
-        // --- Phase 4: Door panels appear ---
-        var doorAppear = mapRange(progress, 0.54, 0.63, 0, 1);
+        // Phase 4: Door panels crossfade in (overlaps with SVG fade)
+        var doorAppear = mapRange(progress, 0.50, 0.58, 0, 1);
         doorContainer.style.opacity = doorAppear;
 
-        // --- Phase 5: Doors rotate open (Y-axis) ---
-        var doorProgress = mapRange(progress, 0.63, 0.92, 0, 1);
-        var doorEased = easeInOutCubic(doorProgress);
+        // Phase 5: Doors rotate open (Y-axis, like hinged temple doors)
+        var doorT = mapRange(progress, 0.65, 0.92, 0, 1);
+        var doorEased = easeInOutCubic(doorT);
         var doorAngle = doorEased * 82;
-
         doorLeft.style.transform  = 'rotateY(' + doorAngle + 'deg)';
         doorRight.style.transform = 'rotateY(' + (-doorAngle) + 'deg)';
 
-        // --- Phase 6: Invite reveal ---
-        var revealOpacity = mapRange(progress, 0.60, 0.80, 0, 1);
+        // Phase 6: Invite reveal
+        var revealOpacity = mapRange(progress, 0.62, 0.82, 0, 1);
         doorReveal.style.opacity = revealOpacity;
 
         ticking = false;
