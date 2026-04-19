@@ -2,26 +2,54 @@
     'use strict';
 
     // ========================================
-    //  Countdown Timer
+    //  Countdown Timer (with "today" + "passed" states)
     // ========================================
-    var weddingDate = new Date("Mar 12, 2026 09:00:00").getTime();
+    var weddingStart = new Date("2026-05-29T04:30:00+05:30").getTime();
+    var weddingEnd   = new Date("2026-05-29T23:59:59+05:30").getTime();
+    var countdownEl  = document.getElementById('countdown');
 
     function updateCountdown() {
-        var now = new Date().getTime();
-        var dist = weddingDate - now;
-        if (dist < 0) {
-            document.getElementById("countdown").innerHTML =
-                '<div style="font-family:Cormorant Upright,serif;font-size:2rem;color:#f3ecba;">The Wedding Day is Here!</div>';
+        var now = Date.now();
+
+        // Already over
+        if (now > weddingEnd + 86400000 * 2) {
+            countdownEl.className = 'countdown is-today';
+            countdownEl.innerHTML = 'Thank you for being part of our journey.';
             return;
         }
+
+        // Wedding day window
+        if (now >= weddingStart - 3600000 && now <= weddingEnd) {
+            countdownEl.className = 'countdown is-today';
+            countdownEl.innerHTML = 'Today is the day — blessings upon us all.';
+            return;
+        }
+
+        // Upcoming
+        var dist = weddingStart - now;
+        if (dist < 0) { dist = 0; }
+
         var d = Math.floor(dist / 86400000);
         var h = Math.floor((dist % 86400000) / 3600000);
         var m = Math.floor((dist % 3600000) / 60000);
         var s = Math.floor((dist % 60000) / 1000);
-        document.getElementById("days").textContent = d < 10 ? "0" + d : d;
-        document.getElementById("hours").textContent = h < 10 ? "0" + h : h;
-        document.getElementById("minutes").textContent = m < 10 ? "0" + m : m;
-        document.getElementById("seconds").textContent = s < 10 ? "0" + s : s;
+
+        var days = document.getElementById('days');
+        if (!days) {
+            // Container was swapped out; restore grid markup
+            countdownEl.className = 'countdown fade-in visible';
+            countdownEl.innerHTML =
+                '<div class="time-box"><span class="time-value" id="days">00</span><span class="time-label">Days</span></div>' +
+                '<div class="time-box"><span class="time-value" id="hours">00</span><span class="time-label">Hours</span></div>' +
+                '<div class="time-box"><span class="time-value" id="minutes">00</span><span class="time-label">Mins</span></div>' +
+                '<div class="time-box"><span class="time-value" id="seconds">00</span><span class="time-label">Secs</span></div>';
+            days = document.getElementById('days');
+        }
+
+        days.textContent = d < 10 ? '0' + d : d;
+        document.getElementById('hours').textContent   = h < 10 ? '0' + h : h;
+        document.getElementById('minutes').textContent = m < 10 ? '0' + m : m;
+        document.getElementById('seconds').textContent = s < 10 ? '0' + s : s;
     }
 
     updateCountdown();
@@ -103,18 +131,22 @@
         heroOverlay.style.opacity = heroOpacity;
         heroOverlay.style.pointerEvents = heroOpacity < 0.1 ? 'none' : '';
 
-        // Phase 2: SVG zoom toward the door entrance
-        var zoomT = mapRange(progress, 0.20, 0.55, 0, 1);
+        // Phase 2: SVG zoom toward the door entrance.
+        // The door center is at (50%, 82.5%) of the SVG. We pivot zoom on it,
+        // then translate up so the door finishes at viewport middle — where
+        // the 3D door panels sit — for a seamless crossfade.
+        var zoomT = mapRange(progress, 0.18, 0.56, 0, 1);
         var zoomEased = easeInOutCubic(zoomT);
-        var scale = 1 + zoomEased * 3.5;
-        var svgOpacity = mapRange(progress, 0.48, 0.56, 1, 0);
-        gopuramSvg.style.transform = 'scale(' + scale + ')';
+        var scale = 1 + zoomEased * 5.2;           // 1 → 6.2
+        var translateYVh = -zoomEased * 31.5;      // 0 → -31.5vh (door-center → viewport-center)
+        var svgOpacity = mapRange(progress, 0.50, 0.58, 1, 0);
+        gopuramSvg.style.transform = 'translateY(' + translateYVh + 'vh) scale(' + scale + ')';
         gopuramSvg.style.opacity = svgOpacity;
 
-        // Phase 3: Dissolve overlay (gentle, short)
-        var darkOpacity = mapRange(progress, 0.48, 0.55, 0, 0.7);
-        var darkFadeOut = mapRange(progress, 0.58, 0.68, 0.7, 0);
-        darkOverlay.style.opacity = progress < 0.58 ? darkOpacity : darkFadeOut;
+        // Phase 3: Dark (mulberry) overlay — ramps in, then STAYS on so the
+        // cream hero never peeks out behind the open doors or before body.
+        var darkOpacity = mapRange(progress, 0.48, 0.58, 0, 0.96);
+        darkOverlay.style.opacity = darkOpacity;
 
         // Phase 4: Door panels crossfade in (overlaps with SVG fade)
         var doorAppear = mapRange(progress, 0.50, 0.58, 0, 1);
@@ -235,5 +267,141 @@
 
     for (var i = 0; i < 10; i++) makeCupVilaku();
     setInterval(makeCupVilaku, 3000);
+
+    // ========================================
+    //  Add-to-Calendar (.ics download)
+    // ========================================
+    var ICS_EVENTS = {
+        reception: {
+            title: 'Sharanya & Vigneshwar — Wedding Reception',
+            start: '20260528T183000',
+            end:   '20260528T223000',
+            location: 'Velammal Hall, Mogappair West Main Road, Nolambur, Chennai - 600037',
+            description: 'Reception — join us for a warm evening of food, music and blessings.'
+        },
+        wedding: {
+            title: 'Sharanya & Vigneshwar — Wedding',
+            start: '20260529T043000',
+            end:   '20260529T063000',
+            location: 'Velammal Hall, Mogappair West Main Road, Nolambur, Chennai - 600037',
+            description: 'Muhurtham between 4.30 am and 6.00 am. Breakfast follows.'
+        }
+    };
+
+    function escapeIcs(str) {
+        return String(str).replace(/\\/g, '\\\\').replace(/,/g, '\\,').replace(/;/g, '\\;').replace(/\n/g, '\\n');
+    }
+
+    function downloadIcs(key) {
+        var evt = ICS_EVENTS[key];
+        if (!evt) return;
+        var now = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        var uid = key + '-' + Date.now() + '@sharanya-vigneshwar';
+        var ics = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Sharanya & Vigneshwar//Wedding Invite//EN',
+            'CALSCALE:GREGORIAN',
+            'METHOD:PUBLISH',
+            'BEGIN:VEVENT',
+            'UID:' + uid,
+            'DTSTAMP:' + now,
+            'DTSTART;TZID=Asia/Kolkata:' + evt.start,
+            'DTEND;TZID=Asia/Kolkata:' + evt.end,
+            'SUMMARY:' + escapeIcs(evt.title),
+            'LOCATION:' + escapeIcs(evt.location),
+            'DESCRIPTION:' + escapeIcs(evt.description),
+            'END:VEVENT',
+            'END:VCALENDAR'
+        ].join('\r\n');
+
+        var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'sharanya-vigneshwar-' + key + '.ics';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 500);
+    }
+
+    document.querySelectorAll('[data-calendar]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            downloadIcs(btn.getAttribute('data-calendar'));
+        });
+    });
+
+    // ========================================
+    //  Background Audio Toggle
+    // ========================================
+    var audioEl = document.getElementById('bgAudio');
+    var audioBtn = document.getElementById('audioToggle');
+    if (audioEl && audioBtn) {
+        audioEl.volume = 0.25;
+        audioBtn.addEventListener('click', function () {
+            var playing = !audioEl.paused;
+            if (playing) {
+                audioEl.pause();
+                audioBtn.setAttribute('aria-pressed', 'false');
+            } else {
+                var p = audioEl.play();
+                if (p && typeof p.then === 'function') {
+                    p.then(function () {
+                        audioBtn.setAttribute('aria-pressed', 'true');
+                    }).catch(function () {
+                        audioBtn.setAttribute('aria-pressed', 'false');
+                    });
+                } else {
+                    audioBtn.setAttribute('aria-pressed', 'true');
+                }
+            }
+        });
+    }
+
+    // ========================================
+    //  Scroll Progress Bar
+    // ========================================
+    var progressEl = document.getElementById('scrollProgress');
+    if (progressEl) {
+        function updateProgress() {
+            var h = document.documentElement;
+            var scrolled = (h.scrollTop || document.body.scrollTop);
+            var height = (h.scrollHeight - h.clientHeight) || 1;
+            progressEl.style.width = Math.min(100, (scrolled / height) * 100) + '%';
+        }
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+    }
+
+    // ========================================
+    //  Share Button (Web Share API + clipboard fallback)
+    // ========================================
+    var shareBtn = document.getElementById('shareBtn');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', function () {
+            var shareData = {
+                title: 'Sharanya weds Vigneshwar',
+                text: 'With the blessings of our families — please join us on 29th May 2026 at Velammal Hall, Chennai.',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(function () { /* user cancelled */ });
+                return;
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(window.location.href).then(function () {
+                    var original = shareBtn.innerHTML;
+                    shareBtn.innerHTML = '<span style="letter-spacing:2px">Link copied</span>';
+                    setTimeout(function () { shareBtn.innerHTML = original; }, 1800);
+                });
+                return;
+            }
+
+            window.prompt('Copy this link:', window.location.href);
+        });
+    }
 
 })();

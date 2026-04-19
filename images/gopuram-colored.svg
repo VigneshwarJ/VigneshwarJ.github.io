@@ -513,18 +513,103 @@
       </g>
     </g>
 
-    <!-- Central doorway (concentric colored frames, dark opening) -->
+    <!-- ======================================================
+         Central doorway — redesigned to mirror the 3D door panels
+         used in mrg/index.html (two-leaf wooden door with brass
+         border strips, nine rows of studs, central ring handles,
+         horizontal bands, top/bottom moldings).
+         Door opening footprint: x=460..540  y=666..820  (80 × 154)
+         ====================================================== -->
     <g>
+      <!-- Outer concentric ornamental frames -->
       <rect x="418" y="626" width="164" height="194" fill="#5E2822"/>
       <rect x="428" y="636" width="144" height="180" fill="#C9A157"/>
       <rect x="438" y="646" width="124" height="170" fill="#B55B3A"/>
       <rect x="448" y="656" width="104" height="158" fill="#C9A157"/>
-      <rect x="460" y="668" width="80"  height="150" fill="#3A1C16"/>
-      <!-- Door vertical split line -->
-      <line x1="500" y1="668" x2="500" y2="818" stroke="#1A0A08" stroke-width="2"/>
-      <!-- Door knobs -->
-      <circle cx="480" cy="745" r="2.5" fill="#C9A157"/>
-      <circle cx="520" cy="745" r="2.5" fill="#C9A157"/>
+      <!-- Dark recess behind door panels -->
+      <rect x="456" y="664" width="88" height="158" fill="#1A0808"/>
+
+      <!-- ===== LEFT DOOR PANEL (x=458..500, y=666..820) ===== -->
+      <!-- Dark wood base -->
+      <rect x="458" y="666" width="42" height="154" fill="#3A1C16"/>
+      <!-- Warm red-brown mid section (simulates the vertical gradient of the 3D panel) -->
+      <rect x="458" y="688" width="42" height="110" fill="#5E2822"/>
+      <!-- Outer brass border strip (3D: border-right on left panel = left edge of SVG door) -->
+      <rect x="458" y="666" width="2.5" height="154" fill="#C9A157"/>
+      <rect x="460.5" y="666" width="0.5" height="154" fill="#B55B3A" opacity="0.7"/>
+      <!-- Top molding (3D: .door-molding-top) -->
+      <rect x="458" y="666" width="42" height="2.5" fill="#C9A157"/>
+      <rect x="458" y="668.5" width="42" height="1" fill="#B55B3A"/>
+      <!-- Bottom molding (3D: .door-molding-bottom) -->
+      <rect x="458" y="817.5" width="42" height="2.5" fill="#C9A157"/>
+      <rect x="458" y="816.5" width="42" height="1" fill="#B55B3A"/>
+      <!-- Horizontal brass bands (3D: .door-horizontal-band — 8 rows) -->
+      <g stroke="#C9A157" stroke-width="0.35" opacity="0.55">
+        <line x1="462" y1="686" x2="500" y2="686"/>
+        <line x1="462" y1="702" x2="500" y2="702"/>
+        <line x1="462" y1="718" x2="500" y2="718"/>
+        <line x1="462" y1="734" x2="500" y2="734"/>
+        <line x1="462" y1="764" x2="500" y2="764"/>
+        <line x1="462" y1="780" x2="500" y2="780"/>
+        <line x1="462" y1="796" x2="500" y2="796"/>
+        <line x1="462" y1="812" x2="500" y2="812"/>
+      </g>
+      <!-- Brass studs — 3 columns × 9 rows (3D: populateDoorDetails()) -->
+      <g fill="#E8C878" stroke="#8A6B20" stroke-width="0.18">
+        <circle cx="469" cy="678" r="0.95"/><circle cx="479" cy="678" r="0.95"/><circle cx="489" cy="678" r="0.95"/>
+        <circle cx="469" cy="694" r="0.95"/><circle cx="479" cy="694" r="0.95"/><circle cx="489" cy="694" r="0.95"/>
+        <circle cx="469" cy="710" r="0.95"/><circle cx="479" cy="710" r="0.95"/><circle cx="489" cy="710" r="0.95"/>
+        <circle cx="469" cy="726" r="0.95"/><circle cx="479" cy="726" r="0.95"/><circle cx="489" cy="726" r="0.95"/>
+        <!-- row 5 omitted: ring handle sits here -->
+        <circle cx="469" cy="756" r="0.95"/><circle cx="479" cy="756" r="0.95"/><circle cx="489" cy="756" r="0.95"/>
+        <circle cx="469" cy="772" r="0.95"/><circle cx="479" cy="772" r="0.95"/><circle cx="489" cy="772" r="0.95"/>
+        <circle cx="469" cy="788" r="0.95"/><circle cx="479" cy="788" r="0.95"/><circle cx="489" cy="788" r="0.95"/>
+        <circle cx="469" cy="804" r="0.95"/><circle cx="479" cy="804" r="0.95"/><circle cx="489" cy="804" r="0.95"/>
+      </g>
+      <!-- Ring handle centered on left panel (3D: .door-ring) -->
+      <circle cx="479" cy="743" r="3.8" fill="none" stroke="#C9A157" stroke-width="1.1"/>
+      <circle cx="479" cy="738.5" r="1.2" fill="#C9A157"/>
+
+      <!-- ===== RIGHT DOOR PANEL (x=500..542, y=666..820) ===== -->
+      <rect x="500" y="666" width="42" height="154" fill="#3A1C16"/>
+      <rect x="500" y="688" width="42" height="110" fill="#5E2822"/>
+      <!-- Outer brass border strip on right edge -->
+      <rect x="539.5" y="666" width="2.5" height="154" fill="#C9A157"/>
+      <rect x="539" y="666" width="0.5" height="154" fill="#B55B3A" opacity="0.7"/>
+      <!-- Top/bottom moldings -->
+      <rect x="500" y="666" width="42" height="2.5" fill="#C9A157"/>
+      <rect x="500" y="668.5" width="42" height="1" fill="#B55B3A"/>
+      <rect x="500" y="817.5" width="42" height="2.5" fill="#C9A157"/>
+      <rect x="500" y="816.5" width="42" height="1" fill="#B55B3A"/>
+      <!-- Horizontal brass bands -->
+      <g stroke="#C9A157" stroke-width="0.35" opacity="0.55">
+        <line x1="500" y1="686" x2="538" y2="686"/>
+        <line x1="500" y1="702" x2="538" y2="702"/>
+        <line x1="500" y1="718" x2="538" y2="718"/>
+        <line x1="500" y1="734" x2="538" y2="734"/>
+        <line x1="500" y1="764" x2="538" y2="764"/>
+        <line x1="500" y1="780" x2="538" y2="780"/>
+        <line x1="500" y1="796" x2="538" y2="796"/>
+        <line x1="500" y1="812" x2="538" y2="812"/>
+      </g>
+      <!-- Brass studs — 3 columns × 9 rows (mirrored) -->
+      <g fill="#E8C878" stroke="#8A6B20" stroke-width="0.18">
+        <circle cx="511" cy="678" r="0.95"/><circle cx="521" cy="678" r="0.95"/><circle cx="531" cy="678" r="0.95"/>
+        <circle cx="511" cy="694" r="0.95"/><circle cx="521" cy="694" r="0.95"/><circle cx="531" cy="694" r="0.95"/>
+        <circle cx="511" cy="710" r="0.95"/><circle cx="521" cy="710" r="0.95"/><circle cx="531" cy="710" r="0.95"/>
+        <circle cx="511" cy="726" r="0.95"/><circle cx="521" cy="726" r="0.95"/><circle cx="531" cy="726" r="0.95"/>
+        <circle cx="511" cy="756" r="0.95"/><circle cx="521" cy="756" r="0.95"/><circle cx="531" cy="756" r="0.95"/>
+        <circle cx="511" cy="772" r="0.95"/><circle cx="521" cy="772" r="0.95"/><circle cx="531" cy="772" r="0.95"/>
+        <circle cx="511" cy="788" r="0.95"/><circle cx="521" cy="788" r="0.95"/><circle cx="531" cy="788" r="0.95"/>
+        <circle cx="511" cy="804" r="0.95"/><circle cx="521" cy="804" r="0.95"/><circle cx="531" cy="804" r="0.95"/>
+      </g>
+      <!-- Ring handle centered on right panel -->
+      <circle cx="521" cy="743" r="3.8" fill="none" stroke="#C9A157" stroke-width="1.1"/>
+      <circle cx="521" cy="738.5" r="1.2" fill="#C9A157"/>
+
+      <!-- Central split line where the two panels meet -->
+      <line x1="500" y1="666" x2="500" y2="820" stroke="#1A0A08" stroke-width="0.8"/>
+
       <!-- Door lintel arch -->
       <path d="M418,626 L582,626 L570,616 L430,616 Z" fill="#A0463F"/>
       <rect x="418" y="612" width="164" height="4" fill="#C9A157"/>
