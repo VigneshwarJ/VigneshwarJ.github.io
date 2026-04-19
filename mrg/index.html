@@ -4,12 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sharanya &amp; Vigneshwar — Wedding Invitation</title>
+    <meta name="description" content="With the blessings of our families, Sharanya and Vigneshwar invite you to their wedding on Friday, 29th May 2026 at Velammal Hall, Chennai.">
+    <meta name="theme-color" content="#1a0810">
+
+    <!-- Open Graph / WhatsApp preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sharanya weds Vigneshwar">
+    <meta property="og:description" content="Join us for our wedding on Friday, 29th May 2026 at Velammal Hall, Chennai.">
+    <meta property="og:image" content="og-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon (inline SVG kalasam) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23f0d860'/><stop offset='1' stop-color='%23b89020'/></linearGradient></defs><circle cx='32' cy='34' r='14' fill='url(%23g)'/><rect x='28' y='40' width='8' height='18' fill='%23dbb040'/><ellipse cx='32' cy='30' rx='7' ry='10' fill='url(%23g)'/><circle cx='32' cy='8' r='3.5' fill='%23f0d860'/><line x1='32' y1='12' x2='32' y2='22' stroke='%23dbb040' stroke-width='3'/></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@400;500;600;700&family=Cormorant:ital,wght@0,400;0,700;1,400&family=Cormorant+Infant&family=Gotu&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@400;500;600;700&family=Cormorant:ital,wght@0,400;0,700;1,400&family=Cormorant+Infant&family=Gotu&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&family=Noto+Serif+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- =========================================== -->
+    <!--  Hidden SVG sprite: reusable peacock motif   -->
+    <!-- =========================================== -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="peacock-motif" viewBox="0 0 140 80">
+                <!-- tail feathers fanning to the right -->
+                <path d="M48,48 Q78,26 120,34" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.85"/>
+                <path d="M48,52 Q82,42 128,50" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.85"/>
+                <path d="M48,56 Q82,58 128,66" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.85"/>
+                <path d="M48,60 Q78,70 120,78" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.7"/>
+                <!-- tail "eye" circles -->
+                <circle cx="116" cy="34" r="2.4" fill="currentColor" opacity="0.9"/>
+                <circle cx="122" cy="50" r="2.6" fill="currentColor"/>
+                <circle cx="122" cy="66" r="2.4" fill="currentColor" opacity="0.9"/>
+                <circle cx="114" cy="78" r="2" fill="currentColor" opacity="0.75"/>
+                <!-- body -->
+                <ellipse cx="38" cy="52" rx="13" ry="9" fill="currentColor" opacity="0.92"/>
+                <!-- neck -->
+                <path d="M34,46 Q24,34 28,20 Q32,12 40,12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+                <!-- head -->
+                <circle cx="40" cy="10" r="3.8" fill="currentColor"/>
+                <!-- beak -->
+                <path d="M43,9 L49,9.5 L43,11 Z" fill="currentColor"/>
+                <!-- crest -->
+                <circle cx="36" cy="3" r="1.2" fill="currentColor"/>
+                <circle cx="40" cy="2" r="1.3" fill="currentColor"/>
+                <circle cx="44" cy="3" r="1.2" fill="currentColor"/>
+                <line x1="36" y1="4" x2="36" y2="6.5" stroke="currentColor" stroke-width="1"/>
+                <line x1="40" y1="3" x2="40" y2="6" stroke="currentColor" stroke-width="1"/>
+                <line x1="44" y1="4" x2="44" y2="6.5" stroke="currentColor" stroke-width="1"/>
+                <!-- legs -->
+                <line x1="34" y1="62" x2="34" y2="72" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <line x1="42" y1="62" x2="42" y2="72" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <!-- perch line -->
+                <line x1="22" y1="72" x2="54" y2="72" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+            </symbol>
+        </defs>
+    </svg>
 
     <!-- Floating Cup Vilaku -->
     <div class="vellakku-container" id="vellakkuContainer"></div>
@@ -311,7 +364,7 @@
             <!-- Hero Names Overlay -->
             <div class="hero-overlay" id="heroOverlay">
                 <div class="hero-border"></div>
-                <div class="om-symbol">Om Gam Ganapataya Namaha</div>
+                <div class="hero-sri">ஸ்ரீ</div>
                 <div class="ornament-double">
                     <span class="line"></span><span class="diamond"></span><span class="line"></span>
                 </div>
@@ -345,37 +398,24 @@
                             &amp;<br>
                             <strong>Mr. B. Senthil</strong>
                         </div>
+                        <div class="hosts-divider" aria-hidden="true"></div>
                         <div>
                             <strong>Mrs. R. Valliammal</strong><br>
                             &amp;<br>
                             <strong>Mr. S. A. Jayakumar</strong>
                         </div>
                     </div>
-                    <div class="ornament-double">
-                        <span class="line"></span><span class="diamond"></span><span class="line"></span>
-                    </div>
                     <div class="invite-label">Wedding Invitation</div>
                     <div class="invite-sub">Cordially solicit your esteemed presence with family and friends on the auspicious occasion of the wedding of</div>
                     <div class="invite-names-formal">
-                        <div><strong>Selvi. S.Sharanya B.E., M.S.</strong></div>
-                        <div class="invite-credential">(Oversight Systems, USA)</div>
+                        <div><strong>Selvi. S. Sharanya</strong></div>
+                        <div class="invite-name-tamil">செல்வி. ச. சரண்யா</div>
                         <div class="invite-amp">with</div>
-                        <div><strong>Selvan. J.Vigneshwar B.E., M.S.</strong></div>
-                        <div class="invite-credential">(AMD, USA)</div>
+                        <div><strong>Selvan. J. Vigneshwar</strong></div>
+                        <div class="invite-name-tamil">செல்வன். ஜெ. விக்னேஷ்வர்</div>
                     </div>
                     <div class="ornament-double">
                         <span class="line"></span><span class="diamond"></span><span class="line"></span>
-                    </div>
-                    <div class="invite-when-where">
-                        <strong>Friday, 29th May 2026</strong><br>
-                        between 4.30 am and 6.00 am<br><br>
-                        at <strong>Velammal Hall,</strong><br>
-                        Mogappair West Main Road, Nolambur, Chennai&nbsp;–&nbsp;37
-                    </div>
-                    <div class="invite-reception-box">
-                        <div class="invite-reception-title">Reception</div>
-                        <div>Thursday, 28th May 2026</div>
-                        <div>From 6.30 pm onwards</div>
                     </div>
                 </div>
             </div>
@@ -402,100 +442,147 @@
     <!-- ======================================= -->
     <div class="page-content">
 
+        <!-- ====== OUR STORY ====== -->
+        <section class="story-section">
+            <div class="section-header fade-in">
+                <div class="peacock-pair" aria-hidden="true">
+                    <svg class="peacock peacock--left"><use href="#peacock-motif"/></svg>
+                    <div class="peacock-diamond"></div>
+                    <svg class="peacock peacock--right"><use href="#peacock-motif"/></svg>
+                </div>
+                <div class="section-eyebrow">our</div>
+                <h2 class="section-title">little story</h2>
+            </div>
+            <p class="story-text fade-in">
+                Two families, two cities, one quiet moment when our paths first crossed — and ever since, the journey has only grown warmer. What began as a conversation turned into companionship, and companionship into a promise we are ready to make before our elders, our gods, and all of you.
+            </p>
+            <p class="story-note fade-in"><em>— with love, Sharanya &amp; Vigneshwar</em></p>
+        </section>
+
+        <!-- ====== CELEBRATIONS ====== -->
         <section class="events">
-            <div class="section-content" style="text-align:center;margin-bottom:40px">
-                <div class="fade-in" style="font-family:'Cormorant Upright',serif;font-size:clamp(1rem,2.5vw,1.6rem);color:var(--text-gold);">Celebrations</div>
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">the</div>
+                <h2 class="section-title">celebrations</h2>
             </div>
             <div class="events-grid">
                 <div class="event-card fade-in fade-in-delay-1">
-                    <div class="event-icon">🎉</div>
+                    <div class="event-icon-wrap" aria-hidden="true">
+                        <!-- poo malai (floral garland) -->
+                        <svg viewBox="0 0 64 64" class="event-svg-icon">
+                            <path d="M6,20 Q32,46 58,20" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                            <circle cx="10" cy="22" r="3" fill="currentColor" opacity="0.85"/>
+                            <circle cx="20" cy="32" r="3" fill="currentColor" opacity="0.85"/>
+                            <circle cx="32" cy="37" r="3.2" fill="currentColor"/>
+                            <circle cx="44" cy="32" r="3" fill="currentColor" opacity="0.85"/>
+                            <circle cx="54" cy="22" r="3" fill="currentColor" opacity="0.85"/>
+                            <circle cx="15" cy="27" r="1.4" fill="currentColor" opacity="0.6"/>
+                            <circle cx="26" cy="35" r="1.4" fill="currentColor" opacity="0.6"/>
+                            <circle cx="38" cy="35" r="1.4" fill="currentColor" opacity="0.6"/>
+                            <circle cx="49" cy="27" r="1.4" fill="currentColor" opacity="0.6"/>
+                        </svg>
+                    </div>
                     <h3>Reception</h3>
                     <div class="event-date">Thursday, 28th May 2026</div>
                     <div class="event-venue">Velammal Hall, Nolambur, Chennai</div>
                     <div class="event-time">From 6.30 pm onwards</div>
-                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Velammal+Hall+Nolambur+Chennai" target="_blank" rel="noopener" class="event-btn">See the route</a>
+                    <div class="event-actions">
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Velammal+Hall+Nolambur+Chennai" target="_blank" rel="noopener" class="event-btn">Route</a>
+                        <button type="button" class="event-btn event-btn-ghost" data-calendar="reception">Add to calendar</button>
+                    </div>
                 </div>
                 <div class="event-card fade-in fade-in-delay-2">
-                    <div class="event-icon">🔥</div>
+                    <div class="event-icon-wrap" aria-hidden="true">
+                        <!-- thali (mangalsutra) -->
+                        <svg viewBox="0 0 64 64" class="event-svg-icon">
+                            <path d="M4,20 Q32,8 60,20" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.8"/>
+                            <circle cx="32" cy="38" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                            <path d="M32,28 L34,34 L40,34 L35,38 L37,44 L32,40 L27,44 L29,38 L24,34 L30,34 Z" fill="currentColor" opacity="0.9"/>
+                            <circle cx="18" cy="22" r="1.5" fill="currentColor" opacity="0.6"/>
+                            <circle cx="46" cy="22" r="1.5" fill="currentColor" opacity="0.6"/>
+                        </svg>
+                    </div>
                     <h3>Wedding</h3>
                     <div class="event-date">Friday, 29th May 2026</div>
                     <div class="event-venue">Velammal Hall, Mogappair West Main Road, Nolambur, Chennai&nbsp;–&nbsp;37</div>
                     <div class="event-time">Between 4.30 am and 6.00 am</div>
-                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Velammal+Hall+Nolambur+Chennai" target="_blank" rel="noopener" class="event-btn">See the route</a>
+                    <div class="event-actions">
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Velammal+Hall+Nolambur+Chennai" target="_blank" rel="noopener" class="event-btn">Route</a>
+                        <button type="button" class="event-btn event-btn-ghost" data-calendar="wedding">Add to calendar</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="map-section">
+        <!-- ====== FINDING THE MANDAPAM ====== -->
+        <section class="mandapam-section">
+            <div class="mandapam-card fade-in">
+                <div class="mandapam-icon" aria-hidden="true">
+                    <svg viewBox="0 0 64 64">
+                        <!-- stylised pin with a small gopuram silhouette inside -->
+                        <path d="M32,4 C20,4 11,13 11,25 C11,40 32,60 32,60 C32,60 53,40 53,25 C53,13 44,4 32,4 Z"
+                              fill="none" stroke="currentColor" stroke-width="1.8"/>
+                        <path d="M22,30 L22,22 L26,22 L26,20 L30,18 L34,20 L38,22 L42,22 L42,30 Z"
+                              fill="currentColor" opacity="0.85"/>
+                        <rect x="30" y="24" width="4" height="6" fill="var(--bg-dark)"/>
+                    </svg>
+                </div>
+                <div class="mandapam-body">
+                    <div class="mandapam-eyebrow">the mandapam</div>
+                    <h3 class="mandapam-name">Velammal Hall</h3>
+                    <p class="mandapam-address">
+                        Mogappair West Main Road,<br>
+                        Nolambur, Chennai&nbsp;–&nbsp;600 037
+                    </p>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Velammal+Hall+Nolambur+Chennai"
+                   target="_blank"
+                   rel="noopener"
+                   class="mandapam-btn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Open in Maps
+                </a>
+            </div>
+        </section>
+
+        <!-- ====== LIVE STREAM ====== -->
+        <section class="livestream-section">
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">watch</div>
+                <h2 class="section-title">the live ceremony</h2>
+            </div>
             <div class="ornament-double fade-in">
                 <span class="line"></span><span class="diamond"></span><span class="line"></span>
             </div>
-            <br>
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Velammal+Hall+Nolambur+Chennai" target="_blank" rel="noopener" class="map-btn fade-in">
-                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                See the route
+            <!-- TODO: replace href with the actual live-stream URL (YouTube / Zoom / etc.) -->
+            <a href="#" class="livestream-btn fade-in disabled" aria-disabled="true" id="liveStreamBtn">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                Live link coming soon
             </a>
-            <p class="fade-in" style="margin-top:10px;font-size:0.8rem;color:var(--text-dim);">Click to open the map</p>
-        </section>
-
-        <section class="meet-section">
-            <div class="meet-label fade-in">meet the</div>
-            <h2 class="meet-title fade-in">bride and groom</h2>
-            <p class="meet-text fade-in">
-                We are delighted to invite you to share in our joy as we begin this new chapter together. Your presence would make our celebration complete, and we look forward to welcoming you at Velammal Hall in Chennai.
+            <p class="fade-in livestream-note">
+                For friends and family joining us from afar, a live stream of the wedding ceremony will be shared here closer to the date.
             </p>
         </section>
 
-        <section class="rsvp-section">
-            <div class="rsvp-title fade-in">Please</div>
-            <div class="rsvp-subtitle fade-in">RSVP</div>
-            <div class="ornament-double fade-in">
-                <span class="line"></span><span class="diamond"></span><span class="line"></span>
+        <!-- ====== PHOTO WALL ====== -->
+        <section class="photowall-section">
+            <div class="section-header fade-in">
+                <div class="section-eyebrow">a shared album</div>
+                <h2 class="section-title">photo wall</h2>
+                <p class="section-lead">Every guest will have a lens on a moment we'll never see ourselves. Please share the photos and videos you capture — we'd love to keep them all in one place.</p>
             </div>
-            <a href="https://wa.me/1234567890" target="_blank" class="rsvp-btn fade-in">
-                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                Click to message on WhatsApp
+            <!-- TODO: replace href with a real upload link (Google Drive / Pic-Time / POV.app etc.) -->
+            <a href="#" class="photowall-btn fade-in disabled" aria-disabled="true" id="photoWallBtn">
+                <svg viewBox="0 0 24 24"><path d="M9 3L7 5H4a2 2 0 00-2 2v11a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2h-3l-2-2H9zm3 14a5 5 0 110-10 5 5 0 010 10z"/></svg>
+                Upload link coming soon
             </a>
         </section>
 
-        <section class="info-section">
-            <h2 class="info-title fade-in">Things to know</h2>
-            <p class="info-subtitle fade-in">To help you feel at ease and enjoy every moment of the celebrations, we've gathered a few thoughtful details we'd love for you to know before the big day.</p>
-            <div class="info-grid">
-                <div class="info-card fade-in fade-in-delay-1">
-                    <div class="info-icon">#️⃣</div>
-                    <h4>Hashtag</h4>
-                    <p>We will share a wedding hashtag closer to the date so you can tag your photos.</p>
-                </div>
-                <div class="info-card fade-in fade-in-delay-2">
-                    <div class="info-icon">☀️</div>
-                    <h4>Weather</h4>
-                    <p>May in Chennai is warm and humid; light, comfortable clothing is ideal for the reception and early-morning ceremony.</p>
-                </div>
-                <div class="info-card fade-in fade-in-delay-3">
-                    <div class="info-icon">🏨</div>
-                    <h4>Staff</h4>
-                    <p>Guests travelling from out of town may find several hotels near Mogappair and Ambattur; we are happy to suggest options on request.</p>
-                </div>
-                <div class="info-card fade-in fade-in-delay-4">
-                    <div class="info-icon">🅿️</div>
-                    <h4>Parking</h4>
-                    <p>Valet parking for all our guests will be available at the venue</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="instagram-section">
-            <div class="insta-label fade-in">Follow</div>
-            <h2 class="insta-title fade-in">the action</h2>
-            <a href="https://instagram.com" target="_blank" class="insta-btn fade-in">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                Click to open our Instagram page
-            </a>
-        </section>
-
+        <!-- ====== COUNTDOWN ====== -->
         <section class="countdown-section">
-            <h2 class="countdown-title fade-in">The countdown begins</h2>
+            <div class="section-header fade-in">
+                <h2 class="section-title">the countdown</h2>
+            </div>
             <div class="countdown fade-in" id="countdown">
                 <div class="time-box"><span class="time-value" id="days">00</span><span class="time-label">Days</span></div>
                 <div class="time-box"><span class="time-value" id="hours">00</span><span class="time-label">Hours</span></div>
@@ -505,17 +592,52 @@
             <p class="countdown-text fade-in">Our families are excited that you are able to join us in celebrating what we hope will be one of the happiest days of our lives.</p>
         </section>
 
+        <!-- ====== BLESSINGS ====== -->
+        <section class="blessings-section">
+            <div class="peacock-pair fade-in" aria-hidden="true">
+                <svg class="peacock peacock--left"><use href="#peacock-motif"/></svg>
+                <div class="peacock-diamond"></div>
+                <svg class="peacock peacock--right"><use href="#peacock-motif"/></svg>
+            </div>
+            <p class="blessings-text fade-in">
+                Your presence and blessings are the only gift we ask for.
+            </p>
+            <p class="blessings-tamil fade-in">தங்கள் வருகையும் ஆசியுமே எங்களுக்குப் போதும்.</p>
+        </section>
+
         <footer class="footer">
             <div class="ornament-double">
                 <span class="line"></span><span class="diamond"></span><span class="line"></span>
             </div>
-            <p style="margin-top:12px;">Made with love</p>
+            <p class="footer-names">Sharanya &amp; Vigneshwar</p>
+            <p class="footer-sub">Chennai · May 2026</p>
+            <div class="footer-actions">
+                <button type="button" class="footer-share" id="shareBtn" aria-label="Share invitation">
+                    <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                    Share
+                </button>
+            </div>
+            <p class="footer-credit">Crafted with love · 2026</p>
         </footer>
     </div>
+
+    <!-- Floating audio toggle (nadaswaram / shehnai). TODO: drop file at audio/nadaswaram.mp3 -->
+    <button class="audio-toggle" id="audioToggle" aria-label="Toggle background music" aria-pressed="false">
+        <svg class="audio-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+        <svg class="audio-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.17v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+    </button>
+
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
     <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
     </button>
+
+    <!-- Audio element (muted by default; user taps to play) -->
+    <audio id="bgAudio" loop preload="none">
+        <source src="audio/nadaswaram.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="script.js"></script>
 </body>
