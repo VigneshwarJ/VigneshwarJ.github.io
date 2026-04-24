@@ -50,12 +50,18 @@ body {
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    /* Warm cream sky matching gopuram-colored.svg's built-in sky rect. */
+    /* Brahma-muhurtham pre-dawn sky — dark maroon night at the top fading
+       through terracotta to warm amber at the temple base. The gopuram's
+       teal tiers + orange accents now pop against real atmospheric depth
+       instead of floating on flat cream. */
     background: linear-gradient(180deg,
-        #FDF4E9 0%,
-        #F8E7D3 55%,
-        #EBD7B8 85%,
-        #D9C4A3 100%
+        #2A0F1E   0%,     /* deep indigo-plum, just before dawn */
+        #4E1F2E  14%,
+        #7A2A2E  30%,     /* rich wine */
+        #B24A3A  50%,     /* terracotta band */
+        #D87F4A  72%,     /* amber sunrise */
+        #E8B078  88%,     /* soft cream dawn */
+        #EFCE9C 100%      /* warm ground */
     );
 }
 
@@ -73,19 +79,24 @@ body {
 .gopuram-svg {
     display: block;
     /* Temple fills viewport height (+6% to crop kalashams just above the fold
-       so it feels grander). Width auto-scales by aspect, overflow is handled by
-       the parent canvas via overflow:hidden — on narrow phones this crops
-       the outer palm trees & side shrines, focusing on the central tower. */
+       so it feels grander). Width auto-derives from the 1000x900 aspect ratio
+       (SVG root also has width/height attributes + aspect-ratio here so
+       Chrome/Safari/Firefox all compute the width consistently, including
+       inside a flex parent on mobile). */
     height: 106%;
     width: auto;
+    aspect-ratio: 1000 / 900;
     max-width: none;
     max-height: none;
-    /* Door center of images/gopuram-colored.svg is (500, 743) in a 1000x900 viewBox
+    /* Stop flex from ever squashing the SVG below its aspect-computed width —
+       on narrow phones the tower tip fills height, palms crop off the sides. */
+    flex: 0 0 auto;
+    flex-shrink: 0;
+    /* Door center of the inlined gopuram is (500, 743) in a 1000x900 viewBox
        → 50% horizontal, 82.5% vertical. Zoom pivots exactly into the doors. */
     transform-origin: 50% 82.5%;
     will-change: transform, opacity;
     user-select: none;
-    -webkit-user-drag: none;
     filter: drop-shadow(0 6px 20px rgba(70, 40, 20, 0.18));
 }
 
@@ -102,61 +113,132 @@ body {
     padding: 60px 30px;
     z-index: 5;
     will-change: opacity;
-    /* Deep warm vignette so the cream sky of the gopuram SVG doesn't wash out
-       the names. Edges stay clear so the temple silhouette shows. */
-    background:
-        radial-gradient(ellipse 70% 55% at 50% 40%, rgba(26, 10, 14, 0.78) 0%, rgba(46, 20, 22, 0.45) 55%, transparent 82%);
+    /* No halo. The sunrise gradient behind provides all the contrast. */
+    background: transparent;
 }
 
 .hero-border {
     position: absolute;
-    inset: 20px;
-    border: 1px solid rgba(243, 236, 186, 0.35);
+    inset: 22px;
+    border: 1px solid rgba(243, 236, 186, 0.18);
     pointer-events: none;
 }
 
 .hero-border::before, .hero-border::after {
-    content: ''; position: absolute; width: 30px; height: 30px;
+    content: ''; position: absolute; width: 32px; height: 32px;
 }
 .hero-border::before { top: -1px; left: -1px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
 .hero-border::after { bottom: -1px; right: -1px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
 
+.hero-names {
+    padding: 2px 0;
+}
+
+.hero-ornament {
+    margin: 10px auto;
+}
+
+/* Feathered backdrop-blur region sitting behind ஸ்ரீ + ornaments + names.
+   The blur + feathered mask are on a ::before pseudo-element so they ONLY
+   soften the temple pixels — the text itself is rendered at full opacity
+   on top and never gets clipped by the mask (important for longer names
+   like "Vigneshwar" whose V / R would otherwise fade into the mask edge). */
+.hero-textgroup {
+    position: relative;
+    padding: 34px 56px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-textgroup::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    z-index: 0;
+    pointer-events: none;
+    backdrop-filter: blur(16px) saturate(1.05);
+    -webkit-backdrop-filter: blur(16px) saturate(1.05);
+    background: radial-gradient(ellipse 72% 62% at 50% 50%,
+        rgba(42, 15, 30, 0.28) 0%,
+        rgba(42, 15, 30, 0.18) 45%,
+        rgba(42, 15, 30, 0.00) 85%);
+    -webkit-mask-image: radial-gradient(ellipse 68% 62% at 50% 50%,
+        #000 40%, rgba(0,0,0,0.85) 65%, transparent 100%);
+            mask-image: radial-gradient(ellipse 68% 62% at 50% 50%,
+        #000 40%, rgba(0,0,0,0.85) 65%, transparent 100%);
+}
+
+/* Keep ஸ்ரீ, ornaments, and names crisp and above the blur region. */
+.hero-textgroup > * { position: relative; z-index: 1; }
+
+@media (max-width: 600px) {
+    .hero-textgroup { padding: 24px 22px 22px; }
+}
+
+/* Gold wedding-card typography against the warm sunrise sky. A deep wine
+   shadow anchors each glyph so the type reads as hand-leafed rather than
+   glowy or airbrushed. */
 .hero-sri {
     font-family: 'Noto Serif Tamil', 'Cormorant Upright', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-    color: var(--text-gold);
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--gold);
     line-height: 1;
-    margin-bottom: 14px;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.85);
+    margin-bottom: 6px;
     letter-spacing: 1px;
+    opacity: 0.95;
+    text-shadow:
+        0 2px 6px rgba(42, 15, 30, 0.55),
+        0 0 14px rgba(42, 15, 30, 0.35);
 }
 
 .hero-name {
     font-family: 'Cormorant Upright', serif;
-    font-size: clamp(3.5rem, 10vw, 7rem);
-    font-weight: 400;
-    color: var(--text-gold);
-    line-height: 1.1;
-    text-shadow: 0 3px 14px rgba(0,0,0,0.8);
+    font-size: clamp(3.2rem, 9vw, 6rem);
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1.05;
+    /* Deep wine shadow creates engraved-gold depth against the warm sky. */
+    text-shadow:
+        0 3px 10px rgba(42, 15, 30, 0.6),
+        0 1px 2px rgba(42, 15, 30, 0.7),
+        0 0 22px rgba(216, 127, 74, 0.35);
 }
 
 .hero-weds {
     font-family: 'Cormorant', serif;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    letter-spacing: 0.42em;
-    color: var(--text-gold);
-    margin: 15px 0;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.3vw, 1.7rem);
+    letter-spacing: 0.18em;
+    color: rgba(243, 236, 186, 0.85);
+    margin: 8px 0;
+    text-transform: lowercase;
+    text-shadow:
+        0 2px 6px rgba(42, 15, 30, 0.55);
 }
 
 .hero-name-kavya {
-    font-family: 'Cormorant', serif;
-    font-style: italic;
-    font-size: clamp(3.5rem, 10vw, 7rem);
-    font-weight: 400;
-    color: var(--text-gold);
-    line-height: 1.1;
-    text-shadow: 0 3px 14px rgba(0,0,0,0.8);
+    font-family: 'Cormorant Upright', serif;
+    font-size: clamp(3.2rem, 9vw, 6rem);
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1.05;
+    text-shadow:
+        0 3px 10px rgba(42, 15, 30, 0.6),
+        0 1px 2px rgba(42, 15, 30, 0.7),
+        0 0 22px rgba(216, 127, 74, 0.35);
+}
+
+/* Gold ornament dividers flanking the "weds" script. */
+.hero-ornament .line {
+    background: linear-gradient(90deg, transparent, rgba(243, 236, 186, 0.7));
+}
+.hero-ornament .line:last-child {
+    background: linear-gradient(90deg, rgba(243, 236, 186, 0.7), transparent);
+}
+.hero-ornament .diamond {
+    background: var(--gold);
+    box-shadow: 0 0 10px rgba(243, 236, 186, 0.6);
 }
 
 .hero-scroll-hint {

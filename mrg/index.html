@@ -22,9 +22,7 @@
     <!-- Fonts trimmed — removed unused Great Vibes & Playfair Display; added &display=swap so text renders on fallback while webfonts arrive. -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@400;500;600;700&family=Cormorant:ital,wght@0,400;0,700;1,400&family=Cormorant+Infant&family=Gotu&family=Montserrat:wght@300;400;500;600&family=Noto+Serif+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Preload the hero temple SVG so it starts fetching in parallel with HTML parse. -->
-    <link rel="preload" as="image" href="../images/gopuram-colored.svg" type="image/svg+xml" fetchpriority="high">
-
+    <!-- Gopuram SVG is inlined in <body>; no external fetch needed. -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -81,24 +79,512 @@
 
             <!-- Centered temple canvas -->
             <div class="temple-canvas">
-                <img class="gopuram-svg" id="gopuramSvg" src="../images/gopuram-colored.svg" width="1000" height="900" alt="South Indian temple gopuram" draggable="false">
-                <!-- legacy-inline-svg-removed: the detailed gopuram is now loaded from images/gopuram-colored.svg -->
+                <!-- ==========================================================
+                     Inlined gopuram (source: ../images/gopuram-colored.svg).
+                     Inlining removes the extra HTTP fetch + any flash-before-
+                     paint when CSS is applied to an <img>. The root <svg>
+                     keeps viewBox="0 0 1000 900" so CSS height:106% + width:
+                     auto sizes it proportionally.
+                     ========================================================== -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 900" width="1000" height="900" preserveAspectRatio="xMidYMax meet" id="gopuramSvg" class="gopuram-svg" role="img" aria-label="South Indian temple gopuram">
+  <defs>
+    <linearGradient id="towerTeal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#6A8F87"/>
+      <stop offset="100%" stop-color="#4A6963"/>
+    </linearGradient>
+    <linearGradient id="towerOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#C37456"/>
+      <stop offset="100%" stop-color="#B55B3A"/>
+    </linearGradient>
+
+    <g id="bird">
+      <path d="M0,0 Q7,-5 14,0 Q7,-2 0,0" fill="#3D5052"/>
+    </g>
+
+    <g id="kalasham">
+      <rect x="-2.6" y="1"    width="5.2" height="1.2" fill="#5E2822"/>
+      <rect x="-2.2" y="-0.2" width="4.4" height="1.2" fill="#C9A157"/>
+      <ellipse cx="0" cy="-2.5" rx="2.2" ry="2.3" fill="#C9A157"/>
+      <rect x="-1.3" y="-4.8" width="2.6" height="0.8" fill="#7E3F36"/>
+      <circle cx="0" cy="-6.6" r="1.5" fill="#C9A157"/>
+      <rect x="-0.4" y="-8.4" width="0.8" height="1" fill="#C9A157"/>
+      <path d="M -0.7,-9.3 L 0.7,-9.3 L 0,-13.5 Z" fill="#C9A157"/>
+    </g>
+
+    <g id="miniShrine">
+      <rect x="-11" y="-3" width="22" height="3" fill="#C9A157"/>
+      <rect x="-11" y="0"  width="22" height="2" fill="#A0463F"/>
+      <rect x="-9.5" y="-28" width="19" height="25" fill="#5D3A28"/>
+      <rect x="-9.5" y="-28" width="19" height="25" fill="#3A1C16" opacity="0.35"/>
+      <rect x="-9.5" y="-28" width="2"  height="25" fill="#3A1C16" opacity="0.5"/>
+      <rect x="7.5"  y="-28" width="2"  height="25" fill="#3A1C16" opacity="0.5"/>
+      <rect x="-9.5" y="-28" width="2.4" height="25" fill="#9C5041"/>
+      <rect x="-3.6" y="-28" width="1.5" height="25" fill="#733428"/>
+      <rect x="2.1"  y="-28" width="1.5" height="25" fill="#733428"/>
+      <rect x="7.1"  y="-28" width="2.4" height="25" fill="#9C5041"/>
+      <rect x="-9"   y="-26" width="0.6" height="21" fill="#B55B3A" opacity="0.7"/>
+      <rect x="8.4"  y="-26" width="0.6" height="21" fill="#B55B3A" opacity="0.7"/>
+      <rect x="-9.5" y="-28"  width="19" height="1.8" fill="#B55B3A"/>
+      <rect x="-9.5" y="-26"  width="19" height="0.9" fill="#C9A157"/>
+      <rect x="-9.5" y="-4.8" width="19" height="1.8" fill="#B55B3A"/>
+      <rect x="-9.5" y="-6"   width="19" height="0.8" fill="#C9A157"/>
+      <rect x="-9.5" y="-17"  width="19" height="1.2" fill="#B55B3A"/>
+      <path d="M-2.2,-6 L-2.2,-14 Q-2.2,-16.5 0,-16.5 Q2.2,-16.5 2.2,-14 L2.2,-6 Z" fill="#C9A157"/>
+      <circle cx="0" cy="-13" r="1.3" fill="#3A1C16"/>
+      <rect x="-1.1" y="-12" width="2.2" height="6" fill="#3A1C16"/>
+      <rect x="-1.4" y="-24" width="2.8" height="4" fill="#C9A157" rx="0.5"/>
+      <rect x="-0.8" y="-23" width="1.6" height="2.5" fill="#3A1C16"/>
+      <rect x="-6.4" y="-22" width="2.2" height="2" fill="#C9A157" opacity="0.5"/>
+      <rect x="4.2"  y="-22" width="2.2" height="2" fill="#C9A157" opacity="0.5"/>
+      <rect x="-6.4" y="-12" width="2.2" height="3" fill="#C9A157" opacity="0.45"/>
+      <rect x="4.2"  y="-12" width="2.2" height="3" fill="#C9A157" opacity="0.45"/>
+      <rect x="-12" y="-30" width="24" height="2"   fill="#C9A157"/>
+      <rect x="-13" y="-32" width="26" height="2"   fill="#A0463F"/>
+      <rect x="-12" y="-34" width="24" height="2"   fill="#C9A157"/>
+      <rect x="-11" y="-42" width="22" height="8" fill="#B55B3A"/>
+      <rect x="-10" y="-41" width="20" height="6" fill="#C37456"/>
+      <path d="M-3,-35 L-3,-38 Q-3,-40 0,-40 Q3,-40 3,-38 L3,-35 Z" fill="#5E2822"/>
+      <circle cx="0" cy="-37" r="0.7" fill="#C9A157"/>
+      <path d="M-11,-42 Q0,-50 11,-42 Z" fill="#B55B3A"/>
+      <path d="M-9,-42  Q0,-49 9,-42  Z" fill="#C37456"/>
+      <path d="M-5,-42 Q0,-47 5,-42 Z" fill="#C9A157" opacity="0.5"/>
+    </g>
+
+    <g id="centerArch">
+      <path d="M-17,0 L-17,-28 A17,17 0 0,1 17,-28 L17,0 Z" fill="#5E2822"/>
+      <path d="M-12,0 L-12,-28 A12,12 0 0,1 12,-28 L12,0 Z" fill="#C9A157"/>
+      <rect x="-17" y="-14" width="34" height="1.5" fill="#B55B3A"/>
+      <circle cx="0" cy="-28" r="2" fill="#B55B3A"/>
+      <rect x="-5" y="-22" width="10" height="22" fill="#3A1C16" rx="2"/>
+      <circle cx="0" cy="-18" r="2.2" fill="#C9A157"/>
+      <rect x="-2" y="-14" width="4" height="14" fill="#5E2822"/>
+      <rect x="-19" y="-30"   width="38" height="1.6" fill="#C9A157"/>
+      <rect x="-19" y="-28.4" width="38" height="0.8" fill="#C37456"/>
+      <rect x="-20" y="-32"   width="40" height="2"   fill="#A0463F"/>
+      <rect x="-19" y="-34"   width="38" height="2"   fill="#C9A157"/>
+      <rect x="-16" y="-42"   width="32" height="8"   fill="#B55B3A"/>
+      <rect x="-14" y="-41"   width="28" height="6"   fill="#C37456"/>
+      <path d="M-3,-36 L-3,-40 Q-3,-42 0,-42 Q3,-42 3,-40 L3,-36 Z" fill="#5E2822"/>
+      <circle cx="0" cy="-39" r="0.9" fill="#C9A157"/>
+      <path d="M-16,-42 Q0,-50 16,-42 Z" fill="#B55B3A"/>
+      <path d="M-13,-42 Q0,-49 13,-42 Z" fill="#C37456"/>
+      <path d="M-7,-42  Q0,-47 7,-42  Z" fill="#C9A157" opacity="0.6"/>
+    </g>
+
+    <g id="tierLayout">
+      <use href="#centerArch" transform="translate(0,-4)"/>
+      <use href="#miniShrine" transform="translate(36,-4)"/>
+      <use href="#miniShrine" transform="translate(62.5,-4)"/>
+      <use href="#miniShrine" transform="translate(89,-4)"/>
+      <use href="#miniShrine" transform="translate(-36,-4)"/>
+      <use href="#miniShrine" transform="translate(-62.5,-4)"/>
+      <use href="#miniShrine" transform="translate(-89,-4)"/>
+    </g>
+
+    <symbol id="tierTeal" viewBox="-100 -54 200 54" preserveAspectRatio="none" overflow="visible">
+      <rect x="-100" y="-4" width="200" height="4" fill="#35524C"/>
+      <rect x="-100" y="-46" width="200" height="42" fill="url(#towerTeal)"/>
+      <rect x="-100" y="-50" width="200" height="4" fill="#C9A157"/>
+      <rect x="-100" y="-54" width="200" height="4" fill="#A0463F"/>
+      <use href="#tierLayout"/>
+    </symbol>
+
+    <g id="pillar">
+      <rect x="-11" y="0"  width="22" height="6" fill="#C9A157"/>
+      <rect x="-11" y="6"  width="22" height="3" fill="#B55B3A"/>
+      <path d="M-11,9 L11,9 L9,14 L-9,14 Z" fill="#9C5041"/>
+      <rect x="-7"  y="14" width="14" height="116" fill="#9C5041"/>
+      <rect x="-7"  y="14" width="3"  height="116" fill="#7E3F36"/>
+      <rect x="4"   y="14" width="3"  height="116" fill="#7E3F36"/>
+      <line x1="-7" y1="42"  x2="7" y2="42"  stroke="#5E2822" stroke-width="1"/>
+      <line x1="-7" y1="72"  x2="7" y2="72"  stroke="#5E2822" stroke-width="1"/>
+      <line x1="-7" y1="102" x2="7" y2="102" stroke="#5E2822" stroke-width="1"/>
+      <path d="M-9,130 L9,130 L11,136 L-11,136 Z" fill="#7E3F36"/>
+      <rect x="-11" y="136" width="22" height="4" fill="#C9A157"/>
+      <rect x="-11" y="140" width="22" height="4" fill="#B55B3A"/>
+    </g>
+
+    <g id="domeShrine">
+      <rect x="-52" y="-10" width="104" height="10" fill="#C9A157"/>
+      <rect x="-52" y="-8"  width="104" height="2"  fill="#B55B3A"/>
+      <rect x="-48" y="-20" width="96"  height="10" fill="#B55B3A"/>
+      <rect x="-48" y="-12" width="96"  height="1"  fill="#C9A157"/>
+      <rect x="-46" y="-62" width="92" height="42" fill="#C4AE88"/>
+      <rect x="-46" y="-62" width="5"   height="42" fill="#9C5041"/>
+      <rect x="41"  y="-62" width="5"   height="42" fill="#9C5041"/>
+      <rect x="-42" y="-62" width="1.5" height="42" fill="#7E3F36"/>
+      <rect x="40.5" y="-62" width="1.5" height="42" fill="#7E3F36"/>
+      <rect x="-22" y="-62" width="2.4" height="42" fill="#7E3F36"/>
+      <rect x="19.6" y="-62" width="2.4" height="42" fill="#7E3F36"/>
+      <path d="M-12,-20 L-12,-46 A12,12 0 0,1 12,-46 L12,-20 Z" fill="#5E2822"/>
+      <path d="M-9,-20  L-9,-46  A9,9 0 0,1 9,-46 L9,-20 Z" fill="#C9A157"/>
+      <rect x="-4" y="-40" width="8" height="20" fill="#3A1C16" rx="1"/>
+      <circle cx="0" cy="-34" r="1.8" fill="#C9A157"/>
+      <rect x="-1.6" y="-30" width="3.2" height="10" fill="#5E2822"/>
+      <rect x="-36" y="-50" width="10" height="26" fill="#5D3A28"/>
+      <rect x="26"  y="-50" width="10" height="26" fill="#5D3A28"/>
+      <path d="M-34,-34 L-34,-42 Q-34,-46 -31,-46 Q-28,-46 -28,-42 L-28,-34 Z" fill="#C9A157"/>
+      <path d="M28,-34 L28,-42 Q28,-46 31,-46 Q34,-46 34,-42 L34,-34 Z" fill="#C9A157"/>
+      <circle cx="-31" cy="-38" r="1" fill="#3A1C16"/>
+      <circle cx="31"  cy="-38" r="1" fill="#3A1C16"/>
+      <rect x="-52" y="-66" width="104" height="4" fill="#C9A157"/>
+      <rect x="-52" y="-70" width="104" height="4" fill="#A0463F"/>
+      <rect x="-54" y="-72" width="108" height="2" fill="#B55B3A"/>
+      <rect x="-42" y="-80" width="84" height="8"  fill="#C9A157"/>
+      <rect x="-42" y="-80" width="84" height="2"  fill="#B55B3A"/>
+      <rect x="-40" y="-72" width="80" height="0.8" fill="#A0463F"/>
+      <path d="M-40,-80 A40,46 0 0,1 40,-80" fill="url(#towerOrange)"/>
+      <path d="M-34,-88 A34,40 0 0,1 34,-88" fill="none" stroke="#C9A157" stroke-width="1.6" opacity="0.9"/>
+      <path d="M-22,-104 A22,26 0 0,1 22,-104" fill="none" stroke="#C9A157" stroke-width="1" opacity="0.8"/>
+      <path d="M-6,-110 Q-6,-116 0,-116 Q6,-116 6,-110 L6,-106 Z" fill="#C9A157"/>
+      <rect x="-2" y="-112" width="4" height="6" fill="#5E2822" rx="1"/>
+      <rect x="-3" y="-130" width="6" height="6" fill="#C9A157"/>
+      <g transform="translate(0,-130) scale(1.6)"><use href="#kalasham"/></g>
+    </g>
+
+    <g id="topCrown">
+      <rect x="-82" y="-10" width="164" height="10" fill="url(#towerTeal)"/>
+      <rect x="-86" y="-12" width="172" height="3"  fill="#C9A157"/>
+      <rect x="-88" y="-15" width="176" height="3"  fill="#A0463F"/>
+      <path d="M -92,-62 Q -100,-66 -103,-74 Q -106,-81 -100,-82 Q -95,-82 -95,-76 Q -94,-70 -92,-66 Z"
+            fill="#6A8F87" stroke="#35524C" stroke-width="1" stroke-linejoin="round"/>
+      <path d="M -94,-66 Q -100,-72 -100,-78" fill="none" stroke="#C9A157" stroke-width="0.9" opacity="0.85"/>
+      <circle cx="-99" cy="-80" r="1.3" fill="#C9A157"/>
+      <path d="M 92,-62 Q 100,-66 103,-74 Q 106,-81 100,-82 Q 95,-82 95,-76 Q 94,-70 92,-66 Z"
+            fill="#6A8F87" stroke="#35524C" stroke-width="1" stroke-linejoin="round"/>
+      <path d="M 94,-66 Q 100,-72 100,-78" fill="none" stroke="#C9A157" stroke-width="0.9" opacity="0.85"/>
+      <circle cx="99" cy="-80" r="1.3" fill="#C9A157"/>
+      <path d="M -92,-15 C -96,-30 -96,-48 -92,-62 L 92,-62 C 96,-48 96,-30 92,-15 Z" fill="url(#towerTeal)"/>
+      <g fill="#9C5041">
+        <rect x="-62"  y="-62" width="2.5" height="47"/>
+        <rect x="-22"  y="-62" width="2.5" height="47"/>
+        <rect x="19.5" y="-62" width="2.5" height="47"/>
+        <rect x="59.5" y="-62" width="2.5" height="47"/>
+      </g>
+      <g fill="#733428">
+        <rect x="-78" y="-62" width="1.2" height="47"/>
+        <rect x="-44" y="-62" width="1.2" height="47"/>
+        <rect x="-8"  y="-62" width="1.2" height="47"/>
+        <rect x="7"   y="-62" width="1.2" height="47"/>
+        <rect x="42"  y="-62" width="1.2" height="47"/>
+        <rect x="76"  y="-62" width="1.2" height="47"/>
+      </g>
+      <g>
+        <path d="M-85,-15 L-85,-35 A8,8 0 0,1 -69,-35 L-69,-15 Z" fill="#5E2822"/>
+        <path d="M-83,-15 L-83,-34 A6,6 0 0,1 -71,-34 L-71,-15 Z" fill="#C9A157"/>
+        <rect x="-80" y="-30" width="6" height="15" fill="#3A1C16" rx="1"/>
+        <circle cx="-77" cy="-27" r="1.2" fill="#C9A157"/>
+      </g>
+      <g>
+        <path d="M-55,-15 L-55,-39 A10,10 0 0,1 -35,-39 L-35,-15 Z" fill="#5E2822"/>
+        <path d="M-52,-15 L-52,-38 A7,7 0 0,1 -38,-38 L-38,-15 Z" fill="#C9A157"/>
+        <rect x="-48" y="-33" width="8" height="18" fill="#3A1C16" rx="1"/>
+        <circle cx="-45" cy="-30" r="1.6" fill="#C9A157"/>
+      </g>
+      <g>
+        <path d="M-15,-15 L-15,-47 A15,15 0 0,1 15,-47 L15,-15 Z" fill="#5E2822"/>
+        <path d="M-11,-15 L-11,-47 A11,11 0 0,1 11,-47 L11,-15 Z" fill="#C9A157"/>
+        <rect x="-17" y="-31" width="34" height="1.6" fill="#B55B3A"/>
+        <rect x="-6" y="-41" width="12" height="26" fill="#3A1C16" rx="2"/>
+        <circle cx="0" cy="-35" r="2.4" fill="#C9A157"/>
+        <rect x="-2" y="-30" width="4" height="15" fill="#5E2822"/>
+        <path d="M-8,-47 L8,-47 L6,-51 L-6,-51 Z" fill="#B55B3A"/>
+      </g>
+      <g>
+        <path d="M35,-15 L35,-39 A10,10 0 0,1 55,-39 L55,-15 Z" fill="#5E2822"/>
+        <path d="M38,-15 L38,-38 A7,7 0 0,1 52,-38 L52,-15 Z" fill="#C9A157"/>
+        <rect x="40" y="-33" width="8" height="18" fill="#3A1C16" rx="1"/>
+        <circle cx="45" cy="-30" r="1.6" fill="#C9A157"/>
+      </g>
+      <g>
+        <path d="M69,-15 L69,-35 A8,8 0 0,1 85,-35 L85,-15 Z" fill="#5E2822"/>
+        <path d="M71,-15 L71,-34 A6,6 0 0,1 83,-34 L83,-15 Z" fill="#C9A157"/>
+        <rect x="74" y="-30" width="6" height="15" fill="#3A1C16" rx="1"/>
+        <circle cx="77" cy="-27" r="1.2" fill="#C9A157"/>
+      </g>
+      <rect x="-96"  y="-66" width="192" height="4" fill="#C9A157"/>
+      <rect x="-100" y="-70" width="200" height="4" fill="#B55B3A"/>
+      <rect x="-100" y="-72" width="200" height="2" fill="#A0463F"/>
+      <rect x="-85" y="-76" width="170" height="4" fill="url(#towerTeal)"/>
+      <rect x="-85" y="-78" width="170" height="2" fill="#C9A157"/>
+      <g transform="translate(0,-78)">
+        <g transform="translate(-72,0) scale(1.0)"><use href="#kalasham"/></g>
+        <g transform="translate(-54,0) scale(1.1)"><use href="#kalasham"/></g>
+        <g transform="translate(-36,0) scale(1.2)"><use href="#kalasham"/></g>
+        <g transform="translate(-18,0) scale(1.25)"><use href="#kalasham"/></g>
+        <g transform="translate(  0,-4) scale(2.0)"><use href="#kalasham"/></g>
+        <g transform="translate( 18,0) scale(1.25)"><use href="#kalasham"/></g>
+        <g transform="translate( 36,0) scale(1.2)"><use href="#kalasham"/></g>
+        <g transform="translate( 54,0) scale(1.1)"><use href="#kalasham"/></g>
+        <g transform="translate( 72,0) scale(1.0)"><use href="#kalasham"/></g>
+      </g>
+    </g>
+
+    <path id="frondLight" d="M0,0 Q35,-30 85,10 Q40,-5 0,0" fill="#7AA063"/>
+    <path id="frondDark"  d="M0,0 Q45,-40 95,-10 Q45,-15 0,0" fill="#588C5A"/>
+
+    <g id="palmCrown">
+      <use href="#frondDark" transform="rotate(-20)"/>
+      <use href="#frondDark" transform="rotate(-60)"/>
+      <use href="#frondDark" transform="rotate(-100)"/>
+      <use href="#frondDark" transform="rotate(-140)"/>
+      <use href="#frondDark" transform="rotate(140)"/>
+      <use href="#frondDark" transform="rotate(100)"/>
+      <use href="#frondDark" transform="rotate(60)"/>
+      <use href="#frondDark" transform="rotate(20)"/>
+      <use href="#frondLight" transform="rotate(-40)"/>
+      <use href="#frondLight" transform="rotate(-80)"/>
+      <use href="#frondLight" transform="rotate(-120)"/>
+      <use href="#frondLight" transform="rotate(120)"/>
+      <use href="#frondLight" transform="rotate(80)"/>
+      <use href="#frondLight" transform="rotate(40)"/>
+      <use href="#frondLight" transform="rotate(0)"/>
+      <circle cx="0"  cy="0" r="5" fill="#7A4B3A"/>
+      <circle cx="-5" cy="5" r="4" fill="#7A4B3A"/>
+      <circle cx="5"  cy="5" r="4" fill="#7A4B3A"/>
+    </g>
+
+    <g id="palmTree">
+      <path d="M -10,150 C -5,100 -3,50 -2,0 L 2,0 C 3,50 5,100 10,150 Z" fill="#C08468"/>
+      <path d="M 0,150 C 2,100 2,50 2,0 L 2,0 C 3,50 5,100 10,150 Z" fill="#9C624A"/>
+      <g fill="none" stroke="#7A4B3A" stroke-width="1.5" opacity="0.6">
+        <path d="M -9,135 Q 0,138 9,135"/>
+        <path d="M -8.5,120 Q 0,123 8.5,120"/>
+        <path d="M -8,105 Q 0,108 8,105"/>
+        <path d="M -7.5,90 Q 0,93 7.5,90"/>
+        <path d="M -7,75 Q 0,78 7,75"/>
+        <path d="M -6.5,60 Q 0,63 6.5,60"/>
+        <path d="M -5.5,45 Q 0,48 5.5,45"/>
+        <path d="M -4.5,30 Q 0,33 4.5,30"/>
+        <path d="M -3.5,15 Q 0,18 3.5,15"/>
+      </g>
+      <use href="#palmCrown"/>
+    </g>
+
+    <g id="bush1">
+      <path d="M-45,0 A45,45 0 0,1 45,0 Z" fill="#588C5A"/>
+      <path d="M-30,0 A30,30 0 0,1 30,0 Z" fill="#7AA063"/>
+      <circle cx="-15" cy="-12" r="3"   fill="#8BB573"/>
+      <circle cx="8"   cy="-20" r="4"   fill="#8BB573"/>
+      <circle cx="18"  cy="-8"  r="2.5" fill="#8BB573"/>
+    </g>
+
+    <g id="bush2">
+      <path d="M-30,0 A30,30 0 0,1 30,0 Z" fill="#4B784E"/>
+      <path d="M-18,0 A18,18 0 0,1 18,0 Z" fill="#699652"/>
+      <circle cx="-8" cy="-8" r="2" fill="#8BB573"/>
+      <circle cx="8"  cy="-5" r="3" fill="#8BB573"/>
+    </g>
+  </defs>
+
+  <use href="#bird" x="280" y="200" transform="scale(0.6) rotate(-10 300 210)"/>
+  <use href="#bird" x="340" y="180" transform="scale(0.5) rotate(-5 360 190)"/>
+  <use href="#bird" x="680" y="240" transform="scale(0.6) rotate(8 700 250)"/>
+  <use href="#bird" x="740" y="300" transform="scale(0.5) rotate(-6 760 310)"/>
+
+  <g>
+    <rect x="40"  y="866" width="920" height="14" fill="#5E3530"/>
+    <rect x="70"  y="840" width="860" height="26" fill="#B55B3A"/>
+    <rect x="70"  y="852" width="860" height="3"  fill="#C9A157"/>
+    <rect x="90"  y="820" width="820" height="20" fill="#C9A157"/>
+    <rect x="90"  y="834" width="820" height="3"  fill="#B55B3A"/>
+    <path d="M395,820 H605 V810 H405 Z" fill="#C9A157"/>
+    <path d="M410,810 H590 V800 H420 Z" fill="#B55B3A"/>
+    <path d="M425,800 H575 V790 H435 Z" fill="#C9A157"/>
+    <rect x="395" y="818" width="210" height="2" fill="#A0463F"/>
+  </g>
+
+  <g>
+    <rect x="110" y="660" width="780" height="160" fill="#C4AE88"/>
+    <rect x="100" y="636" width="800" height="28" fill="url(#towerTeal)"/>
+    <rect x="100" y="632" width="800" height="4"  fill="#C9A157"/>
+    <rect x="100" y="634" width="800" height="2"  fill="#B55B3A"/>
+    <rect x="100" y="664" width="800" height="4"  fill="#C9A157"/>
+    <rect x="100" y="666" width="800" height="2"  fill="#A0463F"/>
+    <rect x="110" y="808" width="780" height="6" fill="#C9A157"/>
+    <rect x="110" y="814" width="780" height="6" fill="#B55B3A"/>
+
+    <use href="#pillar" transform="translate(170,664)"/>
+    <use href="#pillar" transform="translate(230,664)"/>
+    <use href="#pillar" transform="translate(290,664)"/>
+    <use href="#pillar" transform="translate(350,664)"/>
+    <use href="#pillar" transform="translate(650,664)"/>
+    <use href="#pillar" transform="translate(710,664)"/>
+    <use href="#pillar" transform="translate(770,664)"/>
+    <use href="#pillar" transform="translate(830,664)"/>
+
+    <g>
+      <rect x="186" y="700" width="28" height="88" fill="#C4AE88" stroke="#B55B3A" stroke-width="1.2"/>
+      <rect x="246" y="700" width="28" height="88" fill="#C4AE88" stroke="#B55B3A" stroke-width="1.2"/>
+      <rect x="306" y="700" width="28" height="88" fill="#C4AE88" stroke="#B55B3A" stroke-width="1.2"/>
+      <rect x="366" y="700" width="28" height="88" fill="#C4AE88" stroke="#B55B3A" stroke-width="1.2"/>
+      <rect x="606" y="700" width="28" height="88" fill="#C4AE88" stroke="#B55B3A" stroke-width="1.2"/>
+      <rect x="666" y="700" width="28" height="88" fill="#C4AE88" stroke="#B55B3A" stroke-width="1.2"/>
+      <rect x="726" y="700" width="28" height="88" fill="#C4AE88" stroke="#B55B3A" stroke-width="1.2"/>
+      <rect x="786" y="700" width="28" height="88" fill="#C4AE88" stroke="#B55B3A" stroke-width="1.2"/>
+      <g transform="translate(0, 24)">
+        <use href="#miniShrine" transform="translate(200,760) scale(0.55)"/>
+        <use href="#miniShrine" transform="translate(260,760) scale(0.55)"/>
+        <use href="#miniShrine" transform="translate(320,760) scale(0.55)"/>
+        <use href="#miniShrine" transform="translate(380,760) scale(0.55)"/>
+        <use href="#miniShrine" transform="translate(620,760) scale(0.55)"/>
+        <use href="#miniShrine" transform="translate(680,760) scale(0.55)"/>
+        <use href="#miniShrine" transform="translate(740,760) scale(0.55)"/>
+        <use href="#miniShrine" transform="translate(800,760) scale(0.55)"/>
+      </g>
+    </g>
+
+    <g>
+      <rect x="418" y="626" width="164" height="194" fill="#5E2822"/>
+      <rect x="428" y="636" width="144" height="180" fill="#C9A157"/>
+      <rect x="438" y="646" width="124" height="170" fill="#B55B3A"/>
+      <rect x="448" y="656" width="104" height="158" fill="#C9A157"/>
+      <rect x="456" y="664" width="88" height="158" fill="#1A0808"/>
+
+      <rect x="458" y="666" width="42" height="154" fill="#3A1C16"/>
+      <rect x="458" y="688" width="42" height="110" fill="#5E2822"/>
+      <rect x="458" y="666" width="2.5" height="154" fill="#C9A157"/>
+      <rect x="460.5" y="666" width="0.5" height="154" fill="#B55B3A" opacity="0.7"/>
+      <rect x="458" y="666" width="42" height="2.5" fill="#C9A157"/>
+      <rect x="458" y="668.5" width="42" height="1" fill="#B55B3A"/>
+      <rect x="458" y="817.5" width="42" height="2.5" fill="#C9A157"/>
+      <rect x="458" y="816.5" width="42" height="1" fill="#B55B3A"/>
+      <g stroke="#C9A157" stroke-width="0.35" opacity="0.55">
+        <line x1="462" y1="686" x2="500" y2="686"/>
+        <line x1="462" y1="702" x2="500" y2="702"/>
+        <line x1="462" y1="718" x2="500" y2="718"/>
+        <line x1="462" y1="734" x2="500" y2="734"/>
+        <line x1="462" y1="764" x2="500" y2="764"/>
+        <line x1="462" y1="780" x2="500" y2="780"/>
+        <line x1="462" y1="796" x2="500" y2="796"/>
+        <line x1="462" y1="812" x2="500" y2="812"/>
+      </g>
+      <g fill="#E8C878" stroke="#8A6B20" stroke-width="0.18">
+        <circle cx="469" cy="678" r="0.95"/><circle cx="479" cy="678" r="0.95"/><circle cx="489" cy="678" r="0.95"/>
+        <circle cx="469" cy="694" r="0.95"/><circle cx="479" cy="694" r="0.95"/><circle cx="489" cy="694" r="0.95"/>
+        <circle cx="469" cy="710" r="0.95"/><circle cx="479" cy="710" r="0.95"/><circle cx="489" cy="710" r="0.95"/>
+        <circle cx="469" cy="726" r="0.95"/><circle cx="479" cy="726" r="0.95"/><circle cx="489" cy="726" r="0.95"/>
+        <circle cx="469" cy="756" r="0.95"/><circle cx="479" cy="756" r="0.95"/><circle cx="489" cy="756" r="0.95"/>
+        <circle cx="469" cy="772" r="0.95"/><circle cx="479" cy="772" r="0.95"/><circle cx="489" cy="772" r="0.95"/>
+        <circle cx="469" cy="788" r="0.95"/><circle cx="479" cy="788" r="0.95"/><circle cx="489" cy="788" r="0.95"/>
+        <circle cx="469" cy="804" r="0.95"/><circle cx="479" cy="804" r="0.95"/><circle cx="489" cy="804" r="0.95"/>
+      </g>
+      <circle cx="479" cy="743" r="3.8" fill="none" stroke="#C9A157" stroke-width="1.1"/>
+      <circle cx="479" cy="738.5" r="1.2" fill="#C9A157"/>
+
+      <rect x="500" y="666" width="42" height="154" fill="#3A1C16"/>
+      <rect x="500" y="688" width="42" height="110" fill="#5E2822"/>
+      <rect x="539.5" y="666" width="2.5" height="154" fill="#C9A157"/>
+      <rect x="539" y="666" width="0.5" height="154" fill="#B55B3A" opacity="0.7"/>
+      <rect x="500" y="666" width="42" height="2.5" fill="#C9A157"/>
+      <rect x="500" y="668.5" width="42" height="1" fill="#B55B3A"/>
+      <rect x="500" y="817.5" width="42" height="2.5" fill="#C9A157"/>
+      <rect x="500" y="816.5" width="42" height="1" fill="#B55B3A"/>
+      <g stroke="#C9A157" stroke-width="0.35" opacity="0.55">
+        <line x1="500" y1="686" x2="538" y2="686"/>
+        <line x1="500" y1="702" x2="538" y2="702"/>
+        <line x1="500" y1="718" x2="538" y2="718"/>
+        <line x1="500" y1="734" x2="538" y2="734"/>
+        <line x1="500" y1="764" x2="538" y2="764"/>
+        <line x1="500" y1="780" x2="538" y2="780"/>
+        <line x1="500" y1="796" x2="538" y2="796"/>
+        <line x1="500" y1="812" x2="538" y2="812"/>
+      </g>
+      <g fill="#E8C878" stroke="#8A6B20" stroke-width="0.18">
+        <circle cx="511" cy="678" r="0.95"/><circle cx="521" cy="678" r="0.95"/><circle cx="531" cy="678" r="0.95"/>
+        <circle cx="511" cy="694" r="0.95"/><circle cx="521" cy="694" r="0.95"/><circle cx="531" cy="694" r="0.95"/>
+        <circle cx="511" cy="710" r="0.95"/><circle cx="521" cy="710" r="0.95"/><circle cx="531" cy="710" r="0.95"/>
+        <circle cx="511" cy="726" r="0.95"/><circle cx="521" cy="726" r="0.95"/><circle cx="531" cy="726" r="0.95"/>
+        <circle cx="511" cy="756" r="0.95"/><circle cx="521" cy="756" r="0.95"/><circle cx="531" cy="756" r="0.95"/>
+        <circle cx="511" cy="772" r="0.95"/><circle cx="521" cy="772" r="0.95"/><circle cx="531" cy="772" r="0.95"/>
+        <circle cx="511" cy="788" r="0.95"/><circle cx="521" cy="788" r="0.95"/><circle cx="531" cy="788" r="0.95"/>
+        <circle cx="511" cy="804" r="0.95"/><circle cx="521" cy="804" r="0.95"/><circle cx="531" cy="804" r="0.95"/>
+      </g>
+      <circle cx="521" cy="743" r="3.8" fill="none" stroke="#C9A157" stroke-width="1.1"/>
+      <circle cx="521" cy="738.5" r="1.2" fill="#C9A157"/>
+
+      <line x1="500" y1="666" x2="500" y2="820" stroke="#1A0A08" stroke-width="0.8"/>
+
+      <path d="M418,626 L582,626 L570,616 L430,616 Z" fill="#A0463F"/>
+      <rect x="418" y="612" width="164" height="4" fill="#C9A157"/>
+    </g>
+  </g>
+
+  <g>
+    <rect x="305" y="610" width="390" height="50" fill="url(#towerTeal)"/>
+    <rect x="305" y="606" width="390" height="4"  fill="#C9A157"/>
+    <rect x="305" y="602" width="390" height="4"  fill="#A0463F"/>
+    <rect x="305" y="656" width="390" height="4"  fill="#C9A157"/>
+    <path d="M370,656 L370,636 Q370,626 380,626 Q390,626 390,636 L390,656 Z" fill="#5E2822"/>
+    <path d="M374,656 L374,640 Q374,630 380,630 Q386,630 386,640 L386,656 Z" fill="#C9A157"/>
+    <rect x="377" y="642" width="6" height="14" fill="#3A1C16"/>
+
+    <path d="M610,656 L610,636 Q610,626 620,626 Q630,626 630,636 L630,656 Z" fill="#5E2822"/>
+    <path d="M614,656 L614,640 Q614,630 620,630 Q626,630 626,640 L626,656 Z" fill="#C9A157"/>
+    <rect x="617" y="642" width="6" height="14" fill="#3A1C16"/>
+
+    <path d="M460,610 L460,588 A40,40 0 0,1 540,588 L540,610 Z" fill="#5E2822"/>
+    <path d="M466,610 L466,590 A34,34 0 0,1 534,590 L534,610 Z" fill="#C9A157"/>
+    <path d="M472,610 L472,592 A28,28 0 0,1 528,592 L528,610 Z" fill="#B55B3A"/>
+    <rect x="490" y="596" width="20" height="14" fill="#3A1C16"/>
+    <circle cx="500" cy="600" r="2" fill="#C9A157"/>
+
+    <use href="#miniShrine" transform="translate(430,636) scale(0.55)"/>
+    <use href="#miniShrine" transform="translate(570,636) scale(0.55)"/>
+  </g>
+
+  <g id="mainTower">
+    <use href="#tierTeal" x="310" y="564" width="380" height="46"/>
+    <use href="#tierTeal" x="320" y="519" width="360" height="45"/>
+    <use href="#tierTeal" x="330" y="475" width="340" height="44"/>
+    <use href="#tierTeal" x="340" y="432" width="320" height="43"/>
+    <use href="#tierTeal" x="350" y="390" width="300" height="42"/>
+    <use href="#tierTeal" x="360" y="349" width="280" height="41"/>
+    <use href="#tierTeal" x="370" y="309" width="260" height="40"/>
+    <use href="#tierTeal" x="380" y="270" width="240" height="39"/>
+    <use href="#tierTeal" x="390" y="232" width="220" height="38"/>
+    <use href="#tierTeal" x="400" y="195" width="200" height="37"/>
+    <use href="#tierTeal" x="410" y="159" width="180" height="36"/>
+  </g>
+
+  <use href="#domeShrine" transform="translate(200,660)"/>
+  <use href="#domeShrine" transform="translate(800,660) scale(-1,1)"/>
+
+  <g transform="translate(500,159)"><use href="#topCrown"/></g>
+
+  <g transform="translate(45, 730) scale(0.8)"><use href="#palmTree"/></g>
+  <use href="#palmTree" x="85"  y="700"/>
+  <use href="#palmTree" x="915" y="700"/>
+  <g transform="translate(955, 730) scale(0.8)"><use href="#palmTree"/></g>
+
+  <use href="#bush2" x="20"  y="885"/>
+  <use href="#bush1" x="65"  y="890"/>
+  <g transform="translate(105, 890) scale(-1,1)"><use href="#bush2"/></g>
+  <use href="#bush2" x="135" y="880"/>
+
+  <g transform="translate(865, 880) scale(-1,1)"><use href="#bush2"/></g>
+  <g transform="translate(895, 890)"><use href="#bush2"/></g>
+  <g transform="translate(935, 890) scale(-1,1)"><use href="#bush1"/></g>
+  <g transform="translate(980, 885) scale(-1,1)"><use href="#bush2"/></g>
+                </svg>
             </div>
 
             <!-- Hero Names Overlay -->
             <div class="hero-overlay" id="heroOverlay">
                 <div class="hero-border"></div>
-                <div class="hero-sri">ஸ்ரீ</div>
-                <div class="ornament-double">
-                    <span class="line"></span><span class="diamond"></span><span class="line"></span>
-                </div>
-                <div style="text-align:center">
-                    <div class="hero-name">Sharanya</div>
-                    <div class="hero-weds">WEDS</div>
-                    <div class="hero-name-kavya">Vigneshwar</div>
-                </div>
-                <div class="ornament-double">
-                    <span class="line"></span><span class="diamond"></span><span class="line"></span>
+                <div class="hero-textgroup">
+                    <div class="hero-sri">ஸ்ரீ</div>
+                    <div class="ornament-double hero-ornament">
+                        <span class="line"></span><span class="diamond"></span><span class="line"></span>
+                    </div>
+                    <div class="hero-names">
+                        <div class="hero-name">Sharanya</div>
+                        <div class="hero-weds">weds</div>
+                        <div class="hero-name-kavya">Vigneshwar</div>
+                    </div>
+                    <div class="ornament-double hero-ornament">
+                        <span class="line"></span><span class="diamond"></span><span class="line"></span>
+                    </div>
                 </div>
                 <div class="hero-scroll-hint">
                     Scroll to enter
@@ -345,7 +831,7 @@
         </footer>
     </div>
 
-    <!-- Floating audio toggle (nadaswaram / shehnai). TODO: drop file at audio/nadaswaram.mp3 -->
+    <!-- Floating audio toggle (nadaswaram / shehnai). User taps to play; muted by default per autoplay policies. -->
     <button class="audio-toggle" id="audioToggle" aria-label="Toggle background music" aria-pressed="false">
         <svg class="audio-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
         <svg class="audio-off" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.17v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
@@ -363,6 +849,6 @@
         <source src="audio/nadaswaram.mp3" type="audio/mpeg">
     </audio>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
