@@ -466,7 +466,17 @@ body {
 }
 
 .door-reveal-inner {
-    max-width: 600px;
+    /* Cap width so the invite text stays well inside the opening between the
+       swung-open door panels — on very narrow screens the 82deg rotation
+       still projects a sliver of wood near the edges. */
+    max-width: min(600px, calc(100vw - 96px));
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .door-reveal-inner {
+        max-width: calc(100vw - 64px);
+    }
 }
 
 .door-reveal .sanskrit {
@@ -713,6 +723,34 @@ body {
 
 .event-card .event-venue { font-size: 0.85rem; color: var(--text-dim); margin: 5px 0; }
 .event-card .event-time { font-size: 0.85rem; color: var(--gold-dark); font-weight: 500; }
+
+.event-card .event-welcomed-by {
+    font-family: 'Cormorant Upright', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin: 14px 10px 4px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(243, 236, 186, 0.12);
+}
+.event-card .event-welcomed-by span {
+    display: inline-block;
+    margin-top: 2px;
+    font-style: normal;
+    color: var(--text-gold);
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+}
+.event-card .event-welcomed-by .event-cousins {
+    display: block;
+    margin-top: 6px;
+    font-family: 'Cormorant Upright', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    letter-spacing: 0.2px;
+    color: var(--text-dim);
+}
 
 .event-btn {
     display: inline-block;
@@ -1180,6 +1218,34 @@ body {
     text-transform: uppercase;
     color: var(--text-dim);
     margin-bottom: 18px;
+}
+
+.footer-compliments {
+    max-width: 520px;
+    margin: 0 auto 22px;
+    padding: 14px 18px 0;
+    font-family: 'Cormorant Upright', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-dim);
+    border-top: 1px solid rgba(243, 236, 186, 0.12);
+}
+.footer-compliments .footer-compliments-name {
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    color: var(--text-gold);
+    font-size: 1.05rem;
+    letter-spacing: 0.4px;
+}
+.footer-compliments .footer-compliments-cousins {
+    display: block;
+    margin-top: 6px;
+    font-style: normal;
+    color: var(--text-gold);
+    font-size: 1.05rem;
+    letter-spacing: 0.4px;
 }
 
 .footer-actions {

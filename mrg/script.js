@@ -148,8 +148,11 @@
         doorLeft.style.transform  = 'rotateY(' + doorAngle + 'deg)';
         doorRight.style.transform = 'rotateY(' + (-doorAngle) + 'deg)';
 
-        // Invite content fades in behind the doors.
-        doorReveal.style.opacity = mapRange(progress, 0.62, 0.82, 0, 1);
+        // Invite content fades in only once the doors are mostly swung open
+        // (doorAngle hits ~80% of 82deg around progress 0.86) — prevents the
+        // half-open wood panels from covering the invite text on narrower
+        // viewports.
+        doorReveal.style.opacity = mapRange(progress, 0.82, 0.95, 0, 1);
 
         return progress;
     }
@@ -309,6 +312,13 @@
             end:   '20260529T063000',
             location: 'Velammal Hall, Mogappair West Main Road, Nolambur, Chennai - 600037',
             description: 'Muhurtham between 4.30 am and 6.00 am. Breakfast follows.'
+        },
+        palaniReception: {
+            title: 'Sharanya & Vigneshwar — Reception (Palani)',
+            start: '20260601T183000',
+            end:   '20260601T223000',
+            location: 'Raj Mahal, 5, Gounder Iteri Road, Palani - 624601',
+            description: 'Post-wedding reception at Palani. Warm & hearty welcome by Selvi. Priyadharshini Jayakumar.'
         }
     };
 
