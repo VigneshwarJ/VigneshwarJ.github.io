@@ -142,16 +142,20 @@
         // Mulberry overlay ramps in and stays (hides the cream sky).
         darkOverlay.style.opacity = mapRange(progress, 0.48, 0.58, 0, 0.96);
 
-        // Door panels crossfade in, then rotate open.
-        doorContainer.style.opacity = mapRange(progress, 0.50, 0.58, 0, 1);
-        var doorAngle = easeInOutCubic(mapRange(progress, 0.65, 0.92, 0, 1)) * 82;
-        doorLeft.style.transform  = 'rotateY(' + doorAngle + 'deg)';
-        doorRight.style.transform = 'rotateY(' + (-doorAngle) + 'deg)';
+        // Door panels crossfade in, rotate open, then fade + slide out of frame.
+        // Rotation alone leaves a perspective-foreshortened wood sliver on each
+        // side that clips the invite text; fading + translating the panels past
+        // 88% scroll clears the stage completely.
+        var doorFadeIn  = mapRange(progress, 0.50, 0.58, 0, 1);
+        var doorFadeOut = mapRange(progress, 0.88, 0.98, 0, 1);
+        doorContainer.style.opacity = Math.max(0, doorFadeIn - doorFadeOut);
 
-        // Invite content fades in only once the doors are mostly swung open
-        // (doorAngle hits ~80% of 82deg around progress 0.86) — prevents the
-        // half-open wood panels from covering the invite text on narrower
-        // viewports.
+        var doorAngle = easeInOutCubic(mapRange(progress, 0.65, 0.92, 0, 1)) * 88;
+        var doorSlide = easeInOutCubic(doorFadeOut) * 40; // % of panel width
+        doorLeft.style.transform  = 'translateX(-' + doorSlide + '%) rotateY(' + doorAngle + 'deg)';
+        doorRight.style.transform = 'translateX(' + doorSlide + '%) rotateY(' + (-doorAngle) + 'deg)';
+
+        // Invite content fades in as the doors swing open and disappear.
         doorReveal.style.opacity = mapRange(progress, 0.82, 0.95, 0, 1);
 
         return progress;
